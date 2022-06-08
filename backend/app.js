@@ -53,29 +53,29 @@ app.get('/createAccountsRecords', (req, res) => {
 })
 
 
-// app.post('/addAccount', async(req, res) => {
-//     try {
-//         accName = req.body.name;
-//         accType = req.body.type;
-//         accContact = req.body.contact;
-//         accEmail = req.body.email;
-//         accAdd = req.body.address;
-//         accAbout = req.body.about;
+app.post('/public/ledgerCreate', async(req, res) => {
+    try {
+        accName = req.body.name;
+        accType = req.body.type;
+        accContact = req.body.contact;
+        accEmail = req.body.email;
+        accAdd = req.body.address;
+        accAbout = req.body.about;
+        console.log(req.body)
 
-//         let rec = { name: accName, type: accType, contact: accContact, email: accEmail, address: accAdd, about: accAbout }
-//         let sql = 'INSERT INTO accounts set ?'
-//         db.query(sql, rec, err => {
-//             if (err) {
-//                 throw err;
-//             }
-//             res.send('Record Inserted');
-//         });
-//         res.redirect('/public/accounts.html')
-
-//     } catch (err) {
-//         res.sendStatus(400).send(err);
-//     }
-// })
+        let rec = { name: accName, type: accType, contact: accContact, email: accEmail, address: accAdd, about: accAbout }
+        let sql = 'INSERT INTO accounts set ?'
+        db.query(sql, rec, err => {
+            if (err) {
+                throw err;
+            }
+            res.send('Record Inserted');
+        });
+        res.redirect('/')
+    } catch (err) {
+        res.sendStatus(400).send(err);
+    }
+})
 
 app.listen(port, () => {
     console.log(`Server Started On Port ${port}`);

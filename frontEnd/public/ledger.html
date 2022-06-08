@@ -11,7 +11,7 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <!-- <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css"> -->
 
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
@@ -248,7 +248,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="./generalJournal.html" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
                                     General Journal
@@ -359,7 +359,7 @@
                                                 <a class="nav-link" id="custom-tabs-expenses-tab" data-toggle="pill" href="#custom-tabs-expenses" role="tab" aria-controls="custom-tabs-expenses" aria-selected="false">Expenses</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" id="custom-tabs-owners-tab" data-toggle="pill" href="#custom-tabs-owners" role="tab" aria-controls="custom-tabs-owners" aria-selected="false">Owners</a>
+                                                <a class="nav-link" id="custom-tabs-owners-tab" data-toggle="pill" href="#custom-tabs-owners" role="tab" aria-controls="custom-tabs-owners" aria-selected="false">Capital</a>
                                             </li>
                                             <li class="nav-item l--btn-create">
                                                 <a class="btn btn-warning btn-createAccount" data-toggle="modal" data-target="#modal-createAccount">Create Account</a>
@@ -378,7 +378,7 @@
                                                             <div class="card-body pt-0">
                                                                 <div class="row pb-2 mb-1" style="border-bottom: 1px solid;">
                                                                     <div class="col-6">
-                                                                        <h2 class="lead"><b>Account Name Enterrd</b></h2>
+                                                                        <h2 class="lead"><b>Asset Account Name</b></h2>
                                                                         <p class="text-muted text-sm">Submitted About // 10 15 Words Maximum (2 Lines) // </p>
                                                                     </div>
                                                                     <div class="col-6">
@@ -420,7 +420,7 @@
                                                             <div class="card-body pt-0">
                                                                 <div class="row pb-2 mb-1" style="border-bottom: 1px solid;">
                                                                     <div class="col-6">
-                                                                        <h2 class="lead"><b>Account Name Enterrd</b></h2>
+                                                                        <h2 class="lead"><b>Liability Account Name</b></h2>
                                                                         <p class="text-muted text-sm">Submitted About // 10 15 Words Maximum (2 Lines) // </p>
                                                                     </div>
                                                                     <div class="col-6">
@@ -462,7 +462,7 @@
                                                             <div class="card-body pt-0">
                                                                 <div class="row pb-2 mb-1" style="border-bottom: 1px solid;">
                                                                     <div class="col-6">
-                                                                        <h2 class="lead"><b>Account Name Enterrd</b></h2>
+                                                                        <h2 class="lead"><b>Revenue Account Name</b></h2>
                                                                         <p class="text-muted text-sm">Submitted About // 10 15 Words Maximum (2 Lines) // </p>
                                                                     </div>
                                                                     <div class="col-6">
@@ -504,7 +504,7 @@
                                                             <div class="card-body pt-0">
                                                                 <div class="row pb-2 mb-1" style="border-bottom: 1px solid;">
                                                                     <div class="col-6">
-                                                                        <h2 class="lead"><b>Account Name Enterrd</b></h2>
+                                                                        <h2 class="lead"><b>Expense Account Name</b></h2>
                                                                         <p class="text-muted text-sm">Submitted About // 10 15 Words Maximum (2 Lines) // </p>
                                                                     </div>
                                                                     <div class="col-6">
@@ -546,7 +546,7 @@
                                                             <div class="card-body pt-0">
                                                                 <div class="row pb-2 mb-1" style="border-bottom: 1px solid;">
                                                                     <div class="col-6">
-                                                                        <h2 class="lead"><b>Account Name Enterrd</b></h2>
+                                                                        <h2 class="lead"><b>Capital Account Name</b></h2>
                                                                         <p class="text-muted text-sm">Submitted About // 10 15 Words Maximum (2 Lines) // </p>
                                                                     </div>
                                                                     <div class="col-6">
@@ -592,8 +592,8 @@
                 <div class="modal fade" id="modal-createAccount">
                     <div class="modal-dialog">
                         <!-- form start -->
-                        <!-- <form method="POST" action="/addAccount" id="createAccount"> -->
-                        <form>
+                        <form method="POST" action="/public/ledgerCreate" id="createAccount">
+                        <!-- <form> -->
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Create New Transaction Account</h4>
@@ -649,7 +649,7 @@
                     </div>
                     <!-- /.modal-dialog -->
                 </div>
-                  <!-- /.modal -->                        
+                <!-- /.modal -->                        
 
             </section>
             <!-- /.content -->
@@ -686,7 +686,7 @@
         $(function () {
           $.validator.setDefaults({
             submitHandler: function () {
-              alert( "Form successful submitted!" );
+              alert("Form successful submitted!" );
             }
           });
           $('#createAccount').validate({
@@ -707,12 +707,12 @@
             },
             messages: {
               email: {
-                required: "Please enter a email address",
-                email: "Please enter a valid email address"
+                required:"Please enter a email address",
+                email:"Please enter a valid email address"
               },
               contact: {
-                required: "Please provide a contact number",
-                contact: "Please enter a valid contact number"
+                required:"Please provide a contact number",
+                contact:"Please enter a valid contact number"
               }
             },
             errorElement: 'span',
