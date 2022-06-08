@@ -1,0 +1,77 @@
+@keyframes zoom-in-zoom-out {
+    0% {
+        transform: scale(1, 1);
+    }
+    50% {
+        transform: scale(1.25, 1.25);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+.btn-createAccount {
+    position: absolute;
+    right: 5px;
+    width: 250px;
+}
+
+.mobile {
+    display: none;
+    opacity: 0;
+}
+
+.web {
+    display: block;
+    opacity: 1;
+}
+
+.manualTransactionFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-addDbCrAccount {
+    border: 1px solid;
+    margin: 0;
+    border-radius: 50%;
+    padding: 0.5rem 0.75rem;
+}
+
+.balancingTransaction {
+    width: 300px;
+}
+
+.imbalanced {
+    opacity: 0;
+    display: none;
+    animation: zoom-in-zoom-out 2s ease-out infinite;
+}
+
+.transactionButtonDiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 600px) {
+    .mobile {
+        display: block;
+        opacity: 1;
+    }
+    .web {
+        display: none;
+        opacity: 0;
+    }
+}
+
+@media (max-width: 800px) {
+    .btn-createAccount {
+        position: relative;
+        right: 0;
+        width: 100%;
+    }
+    .l--btn-create {
+        width: 100%;
+    }
+}

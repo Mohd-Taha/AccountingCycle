@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Accounting Cycle</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <!-- My style -->
+    <link rel="stylesheet" href="../dist/css/style.css">
+
+</head>
+
+<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed">
+    <div class="wrapper">
+
+        <!-- Preloader -->
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__wobble" src="../dist/img/bookkeeping-icon.jpg" alt="Financial Accounting" height="100" width="100">
+        </div>
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-dark">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="" role="button">
+                        <i class="fas fa-cloud-upload" title="Connected"></i>
+                        <i class="fa-solid fa-triangle-exclamation">&nbsp Disconnected</i>
+                    </a>
+                </li>
+                <!-- Messages Dropdown Menu -->
+                <li class="nav-item dropdown web">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-comments"></i>
+                        <span class="badge badge-danger navbar-badge">100</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <a href="#" class="dropdown-item">
+                            <!-- Message Start -->
+                            <!-- <div class="media">
+                                <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        Brad Diesel
+                                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">Call me whenever you can...</p>
+                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                </div>
+                            </div> -->
+                            <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                    </div>
+                </li>
+                <!-- Notifications Dropdown Menu -->
+                <li class="nav-item dropdown web">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-bell"></i>
+                        <span class="badge badge-warning navbar-badge">15</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">15 Notifications</span>
+                        <!-- <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-envelope mr-2"></i> 4 new messages
+                            <span class="float-right text-muted text-sm">3 mins</span>
+                        </a> -->
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                    </div>
+                </li>
+                <li class="nav-item web">
+                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown web">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="fas fa-moon modeicon"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                        <!-- <div class="dropdown-divider"></div> -->
+                        <a href="#" class="dropdown-item darkmode">
+                            <i class="fas fa-moon"></i>
+                            <span class="float-right">Dark Mode</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item lightmode">
+                            <i class="far fa-sun"></i>
+                            <span class="float-right">Light Mode</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown mobile">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="fas fa-arrow-down"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                        <ul class="navbar-nav ml-auto">
+                            <!-- Messages Dropdown Menu -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" data-toggle="dropdown" href="#">
+                                    <i class="far fa-comments"></i>
+                                    <span class="badge badge-danger navbar-badge">100</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                    <a href="#" class="dropdown-item">
+                                        <!-- Message Start -->
+                                        <!-- <div class="media">
+                                            <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                                            <div class="media-body">
+                                                <h3 class="dropdown-item-title">
+                                                    Brad Diesel
+                                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                                                </h3>
+                                                <p class="text-sm">Call me whenever you can...</p>
+                                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                            </div>
+                                        </div> -->
+                                        <!-- Message End -->
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                                </div>
+                            </li>
+                            <!-- Notifications Dropdown Menu -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" data-toggle="dropdown" href="#">
+                                    <i class="far fa-bell"></i>
+                                    <span class="badge badge-warning navbar-badge">15</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                    <span class="dropdown-item dropdown-header">15 Notifications</span>
+                                    <!-- <div class="dropdown-divider"></div>
+                                    <a href="#" class="dropdown-item">
+                                        <i class="fas fa-envelope mr-2"></i> 4 new messages
+                                        <span class="float-right text-muted text-sm">3 mins</span>
+                                    </a> -->            
+                                    <div class="dropdown-divider"></div>
+                                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                                    <i class="fas fa-expand-arrows-alt"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" data-toggle="dropdown" href="#">
+                                    <i class="fas fa-moon modeicon"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                    <a href="#" class="dropdown-item darkmode">
+                                        <i class="fas fa-moon"></i>
+                                        <span class="float-right">Dark Mode</span>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="#" class="dropdown-item lightmode">
+                                        <i class="far fa-sun"></i>
+                                        <span class="float-right">Light Mode</span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="../index.html" class="brand-link">
+                <img src="../dist/img/accounting-icon.png" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light">Accounting Cycle</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="../dist/img/avatar5.png" class="img-circle elevation-2" alt="User">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block">Mohammad Taha</a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2 user-panel">
+                    <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent nav-compact" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+                        <li class="nav-item">
+                            <a href="../index.html" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Dashboard
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    Add Transactions
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="./manualAdd.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Manual</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Auto Addition
+                                            <span class="right badge badge-danger">Future</span>
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    General Journal
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-columns"></i>
+                                <p>
+                                    Accounts
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-calendar-alt"></i>
+                                <p>
+                                    Trial Balance
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-header">AT END OF FINANCIAL YEAR </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon far fa-plus-square"></i>
+                                <p>
+                                    Adjustment Entries
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Adjusted Ledger
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Adjusted Balance
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-file"></i>
+                                <p>
+                                    Financial Statements
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+
+                <div class="mt-3 pb-3 mb-3 d-flex">
+                    <button type="button" class="btn btn-block btn-danger btn-md">Log Out</button>
+                </div>
+
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>Accounts</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item active">Accounts</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <!-- Default box -->
+                <div class="card card-solid">
+                    <div class="card-body pb-0">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card card-primary card-tabs">
+                                    <div class="card-header p-0 pt-1">
+                                        <ul class="nav nav-tabs" id="custom-tabs-tab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="custom-tabs-assets-tab" data-toggle="pill" href="#custom-tabs-assets" role="tab" aria-controls="custom-tabs-assets aria-selected=" true">Assets</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="custom-tabs-liabilities-tab" data-toggle="pill" href="#custom-tabs-liabilities" role="tab" aria-controls="custom-tabs-liabilities" aria-selected="false">Liabilities</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="custom-tabs-revenues-tab" data-toggle="pill" href="#custom-tabs-revenues" role="tab" aria-controls="custom-tabs-revenues" aria-selected="false">Revenues</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="custom-tabs-expenses-tab" data-toggle="pill" href="#custom-tabs-expenses" role="tab" aria-controls="custom-tabs-expenses" aria-selected="false">Expenses</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="custom-tabs-owners-tab" data-toggle="pill" href="#custom-tabs-owners" role="tab" aria-controls="custom-tabs-owners" aria-selected="false">Owners</a>
+                                            </li>
+                                            <li class="nav-item l--btn-create">
+                                                <a class="btn btn-warning btn-createAccount" data-toggle="modal" data-target="#modal-createAccount">Create Account</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="tab-content" id="custom-tabs-tabContent">
+                                            <div class="tab-pane fade show active" id="custom-tabs-assets" role="tabpanel" aria-labelledby="custom-tabs-assets-tab">
+                                                <div class="row">
+                                                    <!-- Account Card -->
+                                                    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                                                        <div class="card bg-light d-flex flex-fill">
+                                                            <div class="card-header text-muted border-bottom-0">
+                                                            </div>
+                                                            <div class="card-body pt-0">
+                                                                <div class="row pb-2 mb-1" style="border-bottom: 1px solid;">
+                                                                    <div class="col-6">
+                                                                        <h2 class="lead"><b>Account Name Enterrd</b></h2>
+                                                                        <p class="text-muted text-sm">Submitted About // 10 15 Words Maximum (2 Lines) // </p>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span> <b>Email: </b><br/> <span>someone@abc.com</span></li>
+                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> <b>Contact: </b><br/> <span>+92 123 4567890</span></li>
+                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> <b>Address: </b><br/> <span>Demo Street 123, Demo City 04312, Demo City</span></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-6 text-center">
+                                                                        <span class="text-muted text-sm"><b>DEBIT</b><br/>PKR <strong>AB,CDE</strong></span>
+                                                                    </div>
+                                                                    <div class="col-6 text-center">
+                                                                        <span class="text-muted text-sm"><b>CREDIT</b><br/>PKR <strong>W,XYZ</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-footer">
+                                                                <div class="text-right">
+                                                                    <a href="#" class="btn btn-sm btn-primary">
+                                                                        <i class="fas fa-columns"></i>&nbsp View Ledger
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.Account Card -->
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="custom-tabs-liabilities" role="tabpanel" aria-labelledby="custom-tabs-liabilities-tab">
+                                                <div class="row">
+                                                    <!-- Account Card -->
+                                                    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                                                        <div class="card bg-light d-flex flex-fill">
+                                                            <div class="card-header text-muted border-bottom-0">
+                                                            </div>
+                                                            <div class="card-body pt-0">
+                                                                <div class="row pb-2 mb-1" style="border-bottom: 1px solid;">
+                                                                    <div class="col-6">
+                                                                        <h2 class="lead"><b>Account Name Enterrd</b></h2>
+                                                                        <p class="text-muted text-sm">Submitted About // 10 15 Words Maximum (2 Lines) // </p>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span> <b>Email: </b><br/> <span>someone@abc.com</span></li>
+                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> <b>Contact: </b><br/> <span>+92 123 4567890</span></li>
+                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> <b>Address: </b><br/> <span>Demo Street 123, Demo City 04312, Demo City</span></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-6 text-center">
+                                                                        <span class="text-muted text-sm"><b>DEBIT</b><br/>PKR <strong>AB,CDE</strong></span>
+                                                                    </div>
+                                                                    <div class="col-6 text-center">
+                                                                        <span class="text-muted text-sm"><b>CREDIT</b><br/>PKR <strong>W,XYZ</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-footer">
+                                                                <div class="text-right">
+                                                                    <a href="#" class="btn btn-sm btn-primary">
+                                                                        <i class="fas fa-columns"></i>&nbsp View Ledger
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.Account Card -->
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="custom-tabs-revenues" role="tabpanel" aria-labelledby="custom-tabs-revenues-tab">
+                                                <div class="row">
+                                                    <!-- Account Card -->
+                                                    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                                                        <div class="card bg-light d-flex flex-fill">
+                                                            <div class="card-header text-muted border-bottom-0">
+                                                            </div>
+                                                            <div class="card-body pt-0">
+                                                                <div class="row pb-2 mb-1" style="border-bottom: 1px solid;">
+                                                                    <div class="col-6">
+                                                                        <h2 class="lead"><b>Account Name Enterrd</b></h2>
+                                                                        <p class="text-muted text-sm">Submitted About // 10 15 Words Maximum (2 Lines) // </p>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span> <b>Email: </b><br/> <span>someone@abc.com</span></li>
+                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> <b>Contact: </b><br/> <span>+92 123 4567890</span></li>
+                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> <b>Address: </b><br/> <span>Demo Street 123, Demo City 04312, Demo City</span></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-6 text-center">
+                                                                        <span class="text-muted text-sm"><b>DEBIT</b><br/>PKR <strong>AB,CDE</strong></span>
+                                                                    </div>
+                                                                    <div class="col-6 text-center">
+                                                                        <span class="text-muted text-sm"><b>CREDIT</b><br/>PKR <strong>W,XYZ</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-footer">
+                                                                <div class="text-right">
+                                                                    <a href="#" class="btn btn-sm btn-primary">
+                                                                        <i class="fas fa-columns"></i>&nbsp View Ledger
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.Account Card -->
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="custom-tabs-expenses" role="tabpanel" aria-labelledby="custom-tabs-expenses-tab">
+                                                <div class="row">
+                                                    <!-- Account Card -->
+                                                    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                                                        <div class="card bg-light d-flex flex-fill">
+                                                            <div class="card-header text-muted border-bottom-0">
+                                                            </div>
+                                                            <div class="card-body pt-0">
+                                                                <div class="row pb-2 mb-1" style="border-bottom: 1px solid;">
+                                                                    <div class="col-6">
+                                                                        <h2 class="lead"><b>Account Name Enterrd</b></h2>
+                                                                        <p class="text-muted text-sm">Submitted About // 10 15 Words Maximum (2 Lines) // </p>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span> <b>Email: </b><br/> <span>someone@abc.com</span></li>
+                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> <b>Contact: </b><br/> <span>+92 123 4567890</span></li>
+                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> <b>Address: </b><br/> <span>Demo Street 123, Demo City 04312, Demo City</span></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-6 text-center">
+                                                                        <span class="text-muted text-sm"><b>DEBIT</b><br/>PKR <strong>AB,CDE</strong></span>
+                                                                    </div>
+                                                                    <div class="col-6 text-center">
+                                                                        <span class="text-muted text-sm"><b>CREDIT</b><br/>PKR <strong>W,XYZ</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-footer">
+                                                                <div class="text-right">
+                                                                    <a href="#" class="btn btn-sm btn-primary">
+                                                                        <i class="fas fa-columns"></i>&nbsp View Ledger
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.Account Card -->
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="custom-tabs-owners" role="tabpanel" aria-labelledby="custom-tabs-owners-tab">
+                                                <div class="row">
+                                                    <!-- Account Card -->
+                                                    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                                                        <div class="card bg-light d-flex flex-fill">
+                                                            <div class="card-header text-muted border-bottom-0">
+                                                            </div>
+                                                            <div class="card-body pt-0">
+                                                                <div class="row pb-2 mb-1" style="border-bottom: 1px solid;">
+                                                                    <div class="col-6">
+                                                                        <h2 class="lead"><b>Account Name Enterrd</b></h2>
+                                                                        <p class="text-muted text-sm">Submitted About // 10 15 Words Maximum (2 Lines) // </p>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span> <b>Email: </b><br/> <span>someone@abc.com</span></li>
+                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> <b>Contact: </b><br/> <span>+92 123 4567890</span></li>
+                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> <b>Address: </b><br/> <span>Demo Street 123, Demo City 04312, Demo City</span></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-6 text-center">
+                                                                        <span class="text-muted text-sm"><b>DEBIT</b><br/>PKR <strong>AB,CDE</strong></span>
+                                                                    </div>
+                                                                    <div class="col-6 text-center">
+                                                                        <span class="text-muted text-sm"><b>CREDIT</b><br/>PKR <strong>W,XYZ</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-footer">
+                                                                <div class="text-right">
+                                                                    <a href="#" class="btn btn-sm btn-primary">
+                                                                        <i class="fas fa-columns"></i>&nbsp View Ledger
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.Account Card -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+                <div class="modal fade" id="modal-createAccount">
+                    <div class="modal-dialog">
+                        <!-- form start -->
+                        <!-- <form method="POST" action="/addAccount" id="createAccount"> -->
+                        <form>
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Create New Transaction Account</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <!-- <div class="card-body"> -->
+                                        <div class="form-group col-sm-6">
+                                            <label for="inputAccountName">Name</label>
+                                            <input type="text" name="name" class="form-control form-control-border" id="inputAccountName" placeholder="Enter Name">
+                                        </div>
+                                        <div class="form-group col-sm-6">
+                                            <label for="inputAccountType">Type</label>
+                                            <select class="custom-select form-control-border" name="type" id="inputAccountType">
+                                                <option>None</option>
+                                                <option value="Asset">Asset</option>
+                                                <option value="Liability">Liability</option>
+                                                <option value="Capital">Capital</option>
+                                                <option value="Revenue">Revenue</option>
+                                                <option value="Asset">Expense</option>
+                                            </select>
+                                        </div>                          
+                                        <div class="form-group col-sm-6">
+                                            <label for="inputAccountContact">Contact</label>
+                                            <input type="tel" name="contact" class="form-control form-control-border" id="inputAccountContact" pattern="+92-[0-9]{3}-[0-9]{7}" placeholder="+92-123-4567890">
+                                        </div>
+                                        <div class="form-group col-sm-6">
+                                            <label for="inputAccountEmail">Email</label>
+                                            <input type="email" name="email" class="form-control form-control-border" id="inputAccountEmail" placeholder="xyz@abc.com">
+                                        </div>
+                                        <div class="form-group col-sm-12">
+                                            <label for="inputAccountAddress">Address</label>
+                                            <input type="text" name="address" class="form-control form-control-border" id="inputAccountAddress" placeholder="Enter Address">
+                                        </div>
+                                        <div class="form-group col-sm-12">
+                                            <label for="inputAccountAbout">About </label>
+                                            <input type="text" name="about" class="form-control form-control-border" id="inputAccountAbout" placeholder="Enter Few Details">
+                                        </div>
+                                        <!-- </div> -->
+                                        <!-- /.card-body -->
+                                    </div>
+                                </div>
+                                <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Create Account</button>
+                                </div>
+                            </div>
+                        </form>                                    
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                  <!-- /.modal -->                        
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block">
+                <b>Version</b> 1.1
+            </div>
+            <strong>Copyright &copy; 2021-2022 <a href="https://github.com/Mohd-Taha">Mohammad Taha</a>.</strong> All rights reserved.
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <!-- jquery-validation -->
+    <script src="../plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="../plugins/jquery-validation/additional-methods.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../dist/js/demo.js"></script>
+    <!-- <script>
+        $(function () {
+          $.validator.setDefaults({
+            submitHandler: function () {
+              alert( "Form successful submitted!" );
+            }
+          });
+          $('#createAccount').validate({
+            rules: {
+              email: {
+                required: true,
+                email: true,
+              },
+              type: {
+                required: true
+              },
+              name: {
+                required: true
+              },
+              contact: {
+                required: true,
+              },
+            },
+            messages: {
+              email: {
+                required: "Please enter a email address",
+                email: "Please enter a valid email address"
+              },
+              contact: {
+                required: "Please provide a contact number",
+                contact: "Please enter a valid contact number"
+              }
+            },
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+              error.addClass('invalid-feedback');
+              element.closest('.form-group').append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+              $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+              $(element).removeClass('is-invalid');
+            }
+          });
+        });
+    </script>     -->
+</body>
+
+</html>
