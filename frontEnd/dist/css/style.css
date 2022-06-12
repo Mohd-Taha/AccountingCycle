@@ -26,6 +26,14 @@
     opacity: 1;
 }
 
+.web-border {
+    border-left: 1px solid rgba(0, 0, 0, .125);
+}
+
+.list-group-item {
+    padding: 0.25rem;
+}
+
 .manualTransactionFooter {
     display: flex;
     justify-content: space-between;
@@ -46,7 +54,6 @@
 .imbalanced {
     opacity: 0;
     display: none;
-    animation: zoom-in-zoom-out 2s ease-out infinite;
 }
 
 .transactionButtonDiv {
@@ -58,6 +65,11 @@
     padding: 0px 10px;
 }
 
+.account-header {
+    display: flex;
+    justify-content: space-between;
+}
+
 @media (max-width: 600px) {
     .mobile {
         display: block;
@@ -66,6 +78,9 @@
     .web {
         display: none;
         opacity: 0;
+    }
+    .web-border {
+        border: none;
     }
 }
 

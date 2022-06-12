@@ -225,8 +225,8 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>
                                     Add Transactions
@@ -235,7 +235,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link active">
+                                    <a href="#" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Manual</p>
                                     </a>
@@ -260,7 +260,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./ledger.html" class="nav-link">
+                            <a href="./ledger.html" class="nav-link active">
                                 <i class="nav-icon fas fa-columns"></i>
                                 <p>
                                     Accounts
@@ -326,12 +326,13 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Add Transactions (Manually)</h1>
+                            <h1>Account Ledger</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Add Transaction</li>
+                                <li class="breadcrumb-item"><a href="./ledger.html">Accounts</a></li>
+                                <li class="breadcrumb-item active">Ledger</li>
                             </ol>
                         </div>
                     </div>
@@ -344,228 +345,134 @@
                 <!-- Default box -->
                 <div class="card card-solid">
                     <div class="card-body pb-0">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                                <div>
-                                    <!-- SELECT2 EXAMPLE -->
-                                    <div class="card card-default">
-                                        <div class="card-header text-center">
-                                            <h3 class="card-title btn btn-warning" title="Liabilities, Revenues and Capital Increases This Side.">DEBIT ACCOUNTS</h3>
-                                            <div class="card-tools">
-                                                <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                    <i class="fas fa-minus"></i>
-                                                </button> -->
-                                            </div>
-                                        </div>
-                                        <!-- /.card-header -->
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-sm-8 text-center">
-                                                    <label>Account Name</label>
-                                                </div>
-                                                <div class="col-sm-4 text-center">
-                                                    <label>Amount</label>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-8 pb-2">
-                                                    <select class="form-control select2" style="width: 100%;">
-                                                        <option>Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-4 pb-2">
-                                                    <input type="number" name="creditAmount" onchange="addDebit()" class="form-control " id="debit1" min="0" value="0">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-8 pb-2">
-                                                    <select class="form-control select2" style="width: 100%;">
-                                                        <option>Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-4 pb-2">
-                                                    <input type="number" name="creditAmount" onchange="addDebit()" class="form-control " id="debit2" min="0" value="0">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-8 pb-2">
-                                                    <select class="form-control select2" style="width: 100%;">
-                                                        <option>Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-4 pb-2">
-                                                    <input type="number" name="creditAmount" onchange="addDebit()" class="form-control " id="debit3" min="0" value="0">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /.row -->
-                                        <div class="card-footer">
-                                            <div class="row">
-                                                <div class="col-sm-10">
-                                                    <span class="btn btn-info">Amount Debited: <b>PKR</b> <b id="sumDebit">0</b></span>
-                                                </div>
-                                                <div class="col-sm-2 text-right">
-                                                    <button type="button" id="" class="btn btn-tool btn-addDbCrAccount">
-                                                        <i class="fas fa-plus"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
+                        <div class="card">
+                            <div class="card-header account-header">
+                                <h3 class="card-title">Account Name :&nbsp<b>Cash</b></h3>
+                                <h3 class="card-title">Account Type :&nbsp<b>Asset</b></h3>
+                            </div>
+                            <div class="card-body row">
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="card-header">
+                                        <h3 class="card-title text-center">Debit Transactions</h3>
                                     </div>
-                                    <!-- /.card-body -->
+                                    <div class="card-body pb-0 row">
+                                        <div class="col-sm-4">
+                                            <p class="text-center web">Type</p>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <p class="text-center">Amount (PKR)</p>
+                                        </div>
+                                        <ul class="list-group list-group-flush" style="width: 100%;">
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-sm-4 text-center">GJ</div>
+                                                    <div class="col-sm-8 text-center">2,500</div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-sm-4 text-center">GJ</div>
+                                                    <div class="col-sm-8 text-center">2,00,000</div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12 web-border">
+                                    <div class="card-header">
+                                        <h3 class="card-title text-center">Credit Transactions</h3>
+                                    </div>
+                                    <div class="card-body pb-0 row">
+                                        <div class="col-sm-4">
+                                            <p class="text-center web">Type</p>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <p class="text-center">Amount (PKR)</p>
+                                        </div>
+                                        <ul class="list-group list-group-flush" style="width: 100%;">
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-sm-4 text-center">GJ</div>
+                                                    <div class="col-sm-8 text-center">2,500</div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-sm-4 text-center">GJ</div>
+                                                    <div class="col-sm-8 text-center">2,500</div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-sm-4 text-center">GJ</div>
+                                                    <div class="col-sm-8 text-center">2,00,000</div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-sm-4 text-center">Adj</div>
+                                                    <div class="col-sm-8 text-center">20,500</div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- /.card -->
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-12">
-                                <div>
-                                    <!-- SELECT2 EXAMPLE -->
-                                    <div class="card card-default">
-                                        <div class="card-header text-center">
-                                            <h3 class="card-title btn btn-warning" title="Liabilities, Revenues and Capital Increases This Side.">CREDIT ACCOUNTS</h3>
-                                            <div class="card-tools">
-                                                <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                    <i class="fas fa-minus"></i>
-                                                </button> -->
-                                            </div>
-                                        </div>
-                                        <!-- /.card-header -->
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-sm-8 text-center">
-                                                    <label>Account Name</label>
-                                                </div>
-                                                <div class="col-sm-4 text-center">
-                                                    <label>Amount</label>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-8 pb-2">
-                                                    <select class="form-control select2" style="width: 100%;">
-                                                        <option>Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-4 pb-2">
-                                                    <input type="number" name="creditAmount" onChange="addCredit()" class="form-control " id="credit1" min="0" value="0">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-8 pb-2">
-                                                    <select class="form-control select2" style="width: 100%;">
-                                                        <option>Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-4 pb-2">
-                                                    <input type="number" name="creditAmount" onchange="addCredit()" class="form-control " id="credit2" min="0" value="0">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-8 pb-2">
-                                                    <select class="form-control select2" style="width: 100%;">
-                                                        <option>Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-4 pb-2">
-                                                    <input type="number" name="creditAmount" onChange="addCredit()" class="form-control " id="credit3" min="0" value="0">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /.row -->
-                                        <div class="card-footer">
-                                            <div class="row">
-                                                <div class="col-sm-10">
-                                                    <span class="btn btn-info">Amount Credited: <b>PKR</b> <b id="sumCredit">0</b></span>
-                                                </div>
-                                                <div class="col-sm-2 text-right">
-                                                    <button type="button" class="btn btn-tool btn-addDbCrAccount">
-                                                        <i class="fas fa-plus"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12 text-center">
+                                        <span class="mobile">Total Debited</span> PKR <b>2,35,000</b>
                                     </div>
-                                    <!-- /.card-body -->
+                                    <div class="col-md-6 col-sm-12 text-center web-border">
+                                        <span class="mobile">Total Credited</span> PKR <b>2,35,000</b>
+                                    </div>
                                 </div>
-                                <!-- /.card -->
                             </div>
                         </div>
-                        <div class="transactionButtonDiv">
-                            <p class="btn btn-success balancingTransaction" id="balancedTransaction" title="Sum of Accounts Debited is EQUAL to Sum of Accounts Credited.">BALANCED TRANSACTION</p>
-                            <p class="btn btn-danger balancingTransaction imbalanced" id="imbalanceTransaction" title="Sum of Accounts Debited is NOT EQUAL to Sum of Accounts Credited.">IM-BALANCE TRANSACTION</p>
-                            <p class="btn btn-primary balancingTransaction">ADD TRANSACTION</p>
-                        </div>
+                        <!-- <div class="transactionButtonDiv ">
+                            <p class="btn btn-success balancingTransaction " id="balancedTransaction " title="Sum of Accounts Debited is EQUAL to Sum of Accounts Credited. ">BALANCED TRANSACTION</p>
+                            <p class="btn btn-danger balancingTransaction imbalanced " id="imbalanceTransaction " title="Sum of Accounts Debited is NOT EQUAL to Sum of Accounts Credited. ">IM-BALANCE TRANSACTION</p>
+                            <p class="btn btn-primary balancingTransaction ">ADD TRANSACTION</p>
+                        </div> -->
                     </div>
                 </div>
-                <div class="card-body">
-                    <button type="button" class="btn btn-success swalDefaultSuccess">
+                <!-- <div class="card-body ">
+                    <button type="button " class="btn btn-success swalDefaultSuccess ">
                       Launch Success Toast
                     </button>
-                    <button type="button" class="btn btn-info swalDefaultInfo">
+                    <button type="button " class="btn btn-info swalDefaultInfo ">
                       Launch Info Toast
                     </button>
-                    <button type="button" class="btn btn-danger swalDefaultError">
+                    <button type="button " class="btn btn-danger swalDefaultError ">
                       Launch Error Toast
                     </button>
-                    <button type="button" class="btn btn-warning swalDefaultWarning">
+                    <button type="button " class="btn btn-warning swalDefaultWarning ">
                       Launch Warning Toast
                     </button>
-                    <button type="button" class="btn btn-default swalDefaultQuestion">
+                    <button type="button " class="btn btn-default swalDefaultQuestion ">
                       Launch Question Toast
                     </button>
-                    <div class="text-muted mt-3">
-                        For more examples look at <a href="https://sweetalert2.github.io/">https://sweetalert2.github.io/</a>
+                    <div class="text-muted mt-3 ">
+                        For more examples look at <a href="https://sweetalert2.github.io/ ">https://sweetalert2.github.io/</a>
                     </div>
-                </div>
-                <!-- /.card-body -->
+                </div>  -->
+                <!-- /. Sweet Alerts card-body -->
                 <!-- /.card -->
             </section>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
 
-        <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
+        <footer class="main-footer ">
+            <div class="float-right d-none d-sm-block ">
                 <b>Version</b> 1.1
             </div>
-            <strong>Copyright &copy; 2021-2022 <a href="https://github.com/Mohd-Taha">Mohammad Taha</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2021-2022 <a href="https://github.com/Mohd-Taha ">Mohammad Taha</a>.</strong> All rights reserved.
         </footer>
 
         <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
+        <aside class="control-sidebar control-sidebar-dark ">
             <!-- Control sidebar content goes here -->
         </aside>
         <!-- /.control-sidebar -->
@@ -573,72 +480,20 @@
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <script src="../plugins/jquery/jquery.min.js"></script>
+    <script src="../plugins/jquery/jquery.min.js "></script>
     <!-- jquery-validation -->
-    <script src="../plugins/jquery-validation/jquery.validate.min.js"></script>
-    <script src="../plugins/jquery-validation/additional-methods.min.js"></script>
+    <script src="../plugins/jquery-validation/jquery.validate.min.js "></script>
+    <script src="../plugins/jquery-validation/additional-methods.min.js "></script>
     <!-- SweetAlert2 -->
-    <script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="../plugins/sweetalert2/sweetalert2.min.js "></script>
     <!-- Bootstrap 4 -->
-    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js "></script>
     <!-- AdminLTE App -->
-    <script src="../dist/js/adminlte.min.js"></script>
+    <script src="../dist/js/adminlte.min.js "></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
+    <script src="../dist/js/demo.js "></script>
     <!-- Select2 -->
-    <script src="../plugins/select2/js/select2.full.min.js"></script>
-    <script>
-        $(function() {
-            //Initialize Select2 Elements
-            $('.select2').select2()
-        })
-
-        $('#addCreditAccount').click(function() {
-            console.log("scasc")
-            div = document.createElement('div')
-            div.className = 'row';
-            div.innerHTML = '<div class="col-sm-8 pb-2"><select class="form-control select2" style="width: 100%;"><option>Alabama</option><option>Alaska</option><option>California</option><option>Delaware</option><option>Tennessee</option><option>Texas</option><option>Washington</option></select></div><div class="col-sm-4 pb-2"><input type="number" name="creditAmount" class="form-control " id="" min="0" value="0"></div>'
-            document.getElementById('creditAccountsCard').appendChild(div)
-        })
-
-        function addDebit() {
-            val1 = parseInt(document.getElementById('debit1').value);
-            val2 = parseInt(document.getElementById('debit2').value);
-            val3 = parseInt(document.getElementById('debit3').value);
-            sum = val1 + val2 + val3;
-            sumDeb = document.getElementById('sumDebit');
-            sumDeb.innerHTML = sum;
-            balancedTransaction()
-        }
-
-        function addCredit() {
-            val1 = parseInt(document.getElementById('credit1').value);
-            val2 = parseInt(document.getElementById('credit2').value);
-            val3 = parseInt(document.getElementById('credit3').value);
-            sum = val1 + val2 + val3;
-            sumCre = document.getElementById('sumCredit');
-            sumCre.innerHTML = sum;
-            balancedTransaction()
-        }
-
-        function balancedTransaction() {
-            sumDeb = parseInt(document.getElementById('sumDebit').innerText);
-            sumCre = parseInt(document.getElementById('sumCredit').innerText);
-            balanced = document.getElementById('balancedTransaction');
-            imbalance = document.getElementById('imbalanceTransaction')
-            if (sumDeb !== sumCre) {
-                balanced.style.opacity = 0;
-                balanced.style.display = 'none';
-                imbalance.style.opacity = 1;
-                imbalance.style.display = 'block';
-            } else {
-                imbalance.style.opacity = 0;
-                imbalance.style.display = 'none';
-                balanced.style.opacity = 1;
-                balanced.style.display = 'block';
-            }
-        }
-    </script>
+    <script src="../plugins/select2/js/select2.full.min.js "></script>
     <script>
         $(function() {
             var Toast = Swal.mixin({
