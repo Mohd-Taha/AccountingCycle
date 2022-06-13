@@ -31,6 +31,8 @@ app.listen(port, () => {
     console.log(`Server Started On Port ${port} ; http://localhost:${port}/`);
 });
 
+
+// API Routes:
 app.get('/', (req, res) => {
     console.log("Index Page Route");
     res.sendFile('./index.html', { root: static_path });
@@ -73,6 +75,7 @@ app.get('/accounts', (req, res) => {
     res.sendFile('./public/ledger.html', { root: static_path });
 })
 
+
 app.get('/journal', (req, res) => {
     console.log("General Journal Page Route");
     res.sendFile('./public/generalJournal.html', { root: static_path });
@@ -86,4 +89,20 @@ app.get('/unAdjustedTrial', (req, res) => {
 app.get('/accountLedger/:id', (req, res) => {
     console.log("Only Account Page Route");
     res.sendFile('./public/accountLedger.html', { root: static_path });
+})
+
+
+
+// Data APIs:
+app.get('/allAccountsData', (req, res) => {
+    var data;
+    let sql = 'SELECT * FROM accounts;'
+    db.query(sql, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        console.log('Selected All');
+        data = JSON.stringify(result)
+        res.send(data);
+    });
 })

@@ -369,7 +369,7 @@
                                     <div class="card-body">
                                         <div class="tab-content" id="custom-tabs-tabContent">
                                             <div class="tab-pane fade show active" id="custom-tabs-assets" role="tabpanel" aria-labelledby="custom-tabs-assets-tab">
-                                                <div class="row">
+                                                <div class="row" id="asset">
                                                     <!-- Account Card -->
                                                     <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                                                         <div class="card bg-light d-flex flex-fill">
@@ -378,14 +378,14 @@
                                                             <div class="card-body pt-0">
                                                                 <div class="row pb-2 mb-1" style="border-bottom: 1px solid;">
                                                                     <div class="col-6">
-                                                                        <h2 class="lead"><b>Asset Account Name</b></h2>
-                                                                        <p class="text-muted text-sm">Submitted About // 10 15 Words Maximum (2 Lines) // </p>
+                                                                        <h2 class="lead"><b id="account-Name">Asset Account Name</b></h2>
+                                                                        <p class="text-muted text-sm" id="account-About">Submitted About // 10 15 Words Maximum (2 Lines) // </p>
                                                                     </div>
                                                                     <div class="col-6">
                                                                         <ul class="ml-4 mb-0 fa-ul text-muted">
-                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span> <b>Email: </b><br/> <span>someone@abc.com</span></li>
-                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> <b>Contact: </b><br/> <span>+92 123 4567890</span></li>
-                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> <b>Address: </b><br/> <span>Demo Street 123, Demo City 04312, Demo City</span></li>
+                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span> <b>Email: </b><br/> <span id="account-Email">someone@abc.com</span></li>
+                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> <b>Contact: </b><br/> <span id="account-Contact">+92 123 4567890</span></li>
+                                                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> <b>Address: </b><br/> <span id="account-Address">Demo Street 123, Demo City 04312, Demo City</span></li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -400,7 +400,7 @@
                                                             </div>
                                                             <div class="card-footer">
                                                                 <div class="text-right">
-                                                                    <a href="/accountLedger/1" class="btn btn-sm btn-primary">
+                                                                    <a href="/accountLedger/" class="btn btn-sm btn-primary">
                                                                         <i class="fas fa-columns"></i>&nbsp View Ledger
                                                                     </a>
                                                                 </div>
@@ -411,7 +411,7 @@
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade" id="custom-tabs-liabilities" role="tabpanel" aria-labelledby="custom-tabs-liabilities-tab">
-                                                <div class="row">
+                                                <div class="row" id="liability">
                                                     <!-- Account Card -->
                                                     <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                                                         <div class="card bg-light d-flex flex-fill">
@@ -453,7 +453,7 @@
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade" id="custom-tabs-revenues" role="tabpanel" aria-labelledby="custom-tabs-revenues-tab">
-                                                <div class="row">
+                                                <div class="row" id="revenue">
                                                     <!-- Account Card -->
                                                     <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                                                         <div class="card bg-light d-flex flex-fill">
@@ -495,7 +495,7 @@
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade" id="custom-tabs-expenses" role="tabpanel" aria-labelledby="custom-tabs-expenses-tab">
-                                                <div class="row">
+                                                <div class="row" id="expense">
                                                     <!-- Account Card -->
                                                     <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                                                         <div class="card bg-light d-flex flex-fill">
@@ -537,7 +537,7 @@
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade" id="custom-tabs-owners" role="tabpanel" aria-labelledby="custom-tabs-owners-tab">
-                                                <div class="row">
+                                                <div class="row" id="capital">
                                                     <!-- Account Card -->
                                                     <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                                                         <div class="card bg-light d-flex flex-fill">
@@ -616,7 +616,7 @@
                                                 <option value="Liability">Liability</option>
                                                 <option value="Capital">Capital</option>
                                                 <option value="Revenue">Revenue</option>
-                                                <option value="Asset">Expense</option>
+                                                <option value="Expense">Expense</option>
                                             </select>
                                         </div>                          
                                         <div class="form-group col-sm-6">
@@ -682,6 +682,48 @@
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
+    <script>
+        $(document).ready(() => {
+            $.get('http://localhost:3000/allAccountsData', {}, function(data){
+                var assetHTML = "";
+                var liabilityHTML = "";
+                var revenueHTML = "";
+                var expenseHTML = "";
+                var capitalHTML = "";
+                data = JSON.parse(data)
+                for (let i=0; i < data.length; i++) {
+                    var card = `<div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column"><div class="card bg-light d-flex flex-fill"><div class="card-header text-muted border-bottom-0"></div><div class="card-body pt-0"><div class="row pb-2 mb-1" style="border-bottom: 1px solid;"><div class="col-6"><h2 class="lead"><b>${data[i].name}</b></h2><p class="text-muted text-sm">${data[i].about}</p></div><div class="col-6"><ul class="ml-4 mb-0 fa-ul text-muted"><li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span> <b>Email: </b><br/> <span>${data[i].email}</span></li><li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> <b>Contact: </b><br/> <span>${data[i].contact}</span></li><li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> <b>Address: </b><br/> <span>${data[i].address}</span></li></ul></div></div><div class="row"><div class="col-6 text-center"><span class="text-muted text-sm"><b>DEBIT</b><br/>PKR <strong>AB,CDE</strong></span></div><div class="col-6 text-center"><span class="text-muted text-sm"><b>CREDIT</b><br/>PKR <strong>W,XYZ</strong></span></div></div></div><div class="card-footer"><div class="text-right"><a href="/accountLedger/${data[i].id}" class="btn btn-sm btn-primary"><i class="fas fa-columns"></i>&nbsp View Ledger</a></div></div></div></div>`;
+                    switch (data[i].type) {
+                        case "Asset":
+                            assetHTML += card;
+                            // console.log("assetAdd")
+                            break;
+                        case "Liability":
+                            liabilityHTML += card;
+                            // console.log("liabilityAdd")
+                            break;
+                        case "Revenue":
+                            revenueHTML += card;
+                            // console.log("revenueAdd")
+                            break;
+                        case "Expense":
+                            expenseHTML += card;
+                            // console.log("expenseAdd")
+                            break;
+                        case "Capital":
+                            capitalHTML += card;
+                            // console.log("capitalAdd")
+                            break;
+                    }
+                }
+                $('#asset').html(assetHTML);
+                $('#liability').html(liabilityHTML);
+                $('#revenue').html(revenueHTML);
+                $('#expense').html(expenseHTML);
+                $('#capital').html(capitalHTML);
+            });
+        });
+    </script>
     <!-- <script>
         $(function () {
           $.validator.setDefaults({
