@@ -106,3 +106,10 @@ app.get('/allAccountsData', (req, res) => {
         res.send(data);
     });
 })
+
+app.get('/checkConnection', (req, res) => {
+    data = {
+        database: db._connectCalled
+    }
+    res.send(JSON.stringify(data))
+})

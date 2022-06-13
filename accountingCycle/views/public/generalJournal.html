@@ -45,9 +45,9 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="" role="button">
-                        <i class="fas fa-cloud-upload" title="Connected"></i>
-                        <i class="fa-solid fa-triangle-exclamation">&nbsp Disconnected</i>
+                    <a class="nav-link" href="#" role="button">
+                        <i class="fas fa-cloud-upload" title="Connected" id="connected"></i>
+                        <i class="fa-solid fa-triangle-exclamation" id="disconnected">&nbsp  Disconnected</i>
                     </a>
                 </li>
                 <!-- Messages Dropdown Menu -->
@@ -521,6 +521,22 @@
                 "responsive": true,
             });
         });
+    </script>
+    <script>
+        $(document).ready(() => {
+            $.get('http://localhost:3000/checkConnection', {}, function(data) {
+                data = JSON.parse(data);
+                if (data) {
+                    $("#disconnected").css("display", "none");
+                    $("#connected").css("display", "inline-block");
+                } else {
+                    $("#connected").css("display", "none");
+                    $("#disconnected").css("display", "inline-block");
+
+                }
+                console.log(data);
+            })
+        })
     </script>
 
 </body>
