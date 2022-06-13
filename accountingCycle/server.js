@@ -8,7 +8,7 @@ const static_path = path.join(__dirname, '/views');
 app.use('/', express.static('views'));
 
 app.listen(port, () => {
-    console.log(`Server Started On Port ${port}`);
+    console.log(`Server Started On Port ${port} ; http://localhost:${port}/`);
 });
 
 app.get('/', (req, res) => {
@@ -28,7 +28,7 @@ app.get('/accounts', (req, res) => {
 
 app.get('/journal', (req, res) => {
     console.log("General Journal Page Route");
-    res.sendFile('./public/generalJournal', { root: static_path });
+    res.sendFile('./public/generalJournal.html', { root: static_path });
 })
 
 app.get('/unAdjustedTrial', (req, res) => {
@@ -38,5 +38,5 @@ app.get('/unAdjustedTrial', (req, res) => {
 
 app.get('/accountLedger/:id', (req, res) => {
     console.log("Only Account Page Route");
-    res.sendFile('./public/accounts.html', { root: static_path });
+    res.sendFile('./public/accountLedger.html', { root: static_path });
 })
