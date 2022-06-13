@@ -1,0 +1,108 @@
+@keyframes zoom-in-zoom-out {
+    0% {
+        transform: scale(1, 1);
+    }
+    50% {
+        transform: scale(1.25, 1.25);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+.btn-createAccount {
+    position: absolute;
+    right: 5px;
+    width: 250px;
+}
+
+.mobile {
+    display: none;
+    opacity: 0;
+}
+
+.web {
+    display: block;
+    opacity: 1;
+}
+
+.web-border {
+    border-left: 1px solid rgba(0, 0, 0, .125);
+}
+
+.list-group-item {
+    padding: 0.25rem;
+}
+
+.manualTransactionFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-addDbCrAccount {
+    border: 1px solid;
+    margin: 0;
+    border-radius: 50%;
+    padding: 0.5rem 0.75rem;
+}
+
+.balancingTransaction {
+    width: 300px;
+}
+
+.imbalanced {
+    opacity: 0;
+    display: none;
+}
+
+.transactionButtonDiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+.debitTr {
+    padding: 0px 10px;
+}
+
+.account-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.recent-transaction-img {
+    font-size: 30px;
+    float: none;
+    left: 25px;
+    position: absolute;
+    text-align: center;
+}
+
+.badge {
+    font-size: 100%;
+}
+
+@media (max-width: 600px) {
+    .mobile {
+        display: block;
+        opacity: 1;
+    }
+    .web {
+        display: none;
+        opacity: 0;
+    }
+    .web-border {
+        border: none;
+    }
+}
+
+@media (max-width: 800px) {
+    .btn-createAccount {
+        position: relative;
+        right: 0;
+        width: 100%;
+    }
+    .l--btn-create {
+        width: 100%;
+    }
+}
