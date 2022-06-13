@@ -1,11 +1,31 @@
 const express = require('express');
+const mysql = require('mysql');
+const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
 const path = require('path');
 
 const app = express();
 const static_path = path.join(__dirname, '/views');
-// app.use(express.static_path);
 app.use('/', express.static('views'));
+app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(express.json);
+
+//Creating Connection
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'financialAccounting'
+});
+
+//Connect to MySQL
+db.connect(err => {
+    if (err) {
+        throw err;
+    };
+    console.log('MySQL Connected');
+});
+
 
 app.listen(port, () => {
     console.log(`Server Started On Port ${port} ; http://localhost:${port}/`);
@@ -19,6 +39,33 @@ app.get('/', (req, res) => {
 app.get('/addTransaction', (req, res) => {
     console.log("Manual Add Transaction Page Route");
     res.sendFile('./public/manualAdd.html', { root: static_path });
+})
+
+app.post('/createAccount', async(req, res) => {
+    try {
+        accName = req.body.name;
+        accType = req.body.type;
+        accContact = req.body.contact;
+        accEmail = req.body.email;
+        accAdd = req.body.address;
+        accAbout = req.body.about;
+
+        let rec = { name: accName, type: accType, contact: accContact, email: accEmail, address: accAdd, about: accAbout };
+        let sql = 'INSERT INTO accounts set ?'
+        db.query(sql, rec, err => {
+            if (err) {
+                throw err;
+            }
+            console.log("Record Inserted");
+        });
+        console.log(rec)
+
+    } catch (err) {
+        console.log("Error In Form Post Request\n", err);
+        res.sendStatus(400).send(err);
+    }
+    res.redirect('/accounts');
+
 })
 
 app.get('/accounts', (req, res) => {

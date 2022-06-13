@@ -30,34 +30,34 @@
 //     console.log('MySQL Connected');
 // });
 
-// //Create Database
-// app.get('/createdatabase', (req, res) => {
-//     let sql = 'CREATE DATABASE financialAccounting';
-//     db.query(sql, err => {
-//         if (err) {
-//             throw err;
-//         }
-//         res.send('Database Created');
-//     });
-// });
+//Create Database
+app.get('/createdatabase', (req, res) => {
+    let sql = 'CREATE DATABASE financialAccounting';
+    db.query(sql, err => {
+        if (err) {
+            throw err;
+        }
+        res.send('Database Created');
+    });
+});
 
-// //Create Table
-// app.get('/createTables', (req, res) => {
-//     let sql = 'CREATE TABLE accounts (id int AUTO_INCREMENT, name VARCHAR(255), type VARCHAR(20), contact VARCHAR(20), email VARCHAR(255), address VARCHAR(255), about VARCHAR(255), PRIMARY KEY(id))'
-//     db.query(sql, err => {
-//         if (err) {
-//             throw err;
-//         }
-//         res.send('Accounts Table Created');
-//     });
-//     let sql2 = 'CREATE TABLE transactions (id int AUTO_INCREMENT, transactionDate DATE, debitAccounts VARCHAR(255), debitValues VARCHAR(255), creditAccounts VARCHAR(255), creditValues VARCHAR(255), PRIMARY KEY(id))'
-//     db.query(sql2, err => {
-//         if (err) {
-//             throw err;
-//         }
-//         res.send('Transactions Table Created');
-//     });
-// })
+//Create Table
+app.get('/createTables', (req, res) => {
+    let sql = 'CREATE TABLE accounts (id int AUTO_INCREMENT, name VARCHAR(255), type VARCHAR(20), contact VARCHAR(20), email VARCHAR(255), address VARCHAR(255), about VARCHAR(255), PRIMARY KEY(id))'
+    db.query(sql, err => {
+        if (err) {
+            throw err;
+        }
+        res.send('Accounts Table Created');
+    });
+    let sql2 = 'CREATE TABLE transactions (id int AUTO_INCREMENT, transactionDate DATE, debitAccounts VARCHAR(255), debitValues VARCHAR(255), creditAccounts VARCHAR(255), creditValues VARCHAR(255), PRIMARY KEY(id))'
+    db.query(sql2, err => {
+        if (err) {
+            throw err;
+        }
+        res.send('Transactions Table Created');
+    });
+})
 
 // router.get('/', (req, res) => {
 //     console.log("svsdvsdv", db);
