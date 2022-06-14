@@ -449,7 +449,7 @@
                             <div class="transactionButtonDiv">
                                 <p class="btn btn-success balancingTransaction" id="balancedTransaction" title="Sum of Accounts Debited is EQUAL to Sum of Accounts Credited.">BALANCED TRANSACTION</p>
                                 <p class="btn btn-danger balancingTransaction imbalanced" id="imbalanceTransaction" title="Sum of Accounts Debited is NOT EQUAL to Sum of Accounts Credited.">IM-BALANCE TRANSACTION</p>
-                                <button class="btn btn-primary balancingTransaction" style="height: 40px;" type="submit">ADD TRANSACTION</button>
+                                <button class="btn btn-primary balancingTransaction" style="height: 40px;" id="addTransactionBtn" type="submit" disabled="disabled">ADD TRANSACTION</button>
                             </div>
                         </form>
                     </div>
@@ -522,7 +522,7 @@
         $('#addCreditAccount').click(function() {
             div = document.createElement('div')
             div.className = 'row';
-            div.innerHTML = `<div class="col-sm-8 pb-2"><select class="form-control select2 creditAccName" name="creditAccName" style="width: 100%;">${allAccountsString}</select></div><div class="col-sm-4 pb-2"><input type="number" name="creditAmount" onChange="addCredit()" class="form-control creditAccAmount" id="" min="0" value="0"></div>`;
+            div.innerHTML = `<div class="col-sm-8 pb-2"><select class="form-control select2 creditAccName" name="creditAccName" style="width: 100%;">${allAccountsString}</select></div><div class="col-sm-4 pb-2"><input type="number" name="creditAccAmount" onChange="addCredit()" class="form-control creditAccAmount" id="" min="0" value="0"></div>`;
             document.getElementById('creditAccountsCard').appendChild(div)
         })
 
@@ -565,11 +565,17 @@
                 balanced.style.display = 'none';
                 imbalance.style.opacity = 1;
                 imbalance.style.display = 'block';
+                document.getElementById('addTransactionBtn').disabled = 'disabled';
             } else {
                 imbalance.style.opacity = 0;
                 imbalance.style.display = 'none';
                 balanced.style.opacity = 1;
                 balanced.style.display = 'block';
+                if (sumDeb === 0) {
+                    document.getElementById('addTransactionBtn').disabled = 'disabled';
+                } else {
+                    document.getElementById('addTransactionBtn').disabled = '';
+                }
             }
         }
     </script>
@@ -583,7 +589,6 @@
                 } else {
                     $("#connected").css("display", "none");
                     $("#disconnected").css("display", "inline-block");
-
                 }
                 console.log(data);
             })

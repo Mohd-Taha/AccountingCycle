@@ -61,8 +61,8 @@
     justify-content: space-between;
 }
 
-.debitTr {
-    padding: 0px 10px;
+.creditTr {
+    padding: 0px 30px;
 }
 
 .account-header {

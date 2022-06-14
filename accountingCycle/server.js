@@ -46,7 +46,7 @@ db.connect(err => {
 //         }
 //         res.send('Accounts Table Created');
 //     });
-//     let sql2 = 'CREATE TABLE transactions (id int AUTO_INCREMENT, transactionDate DATE, debitAccounts VARCHAR(255), debitValues VARCHAR(255), creditAccounts VARCHAR(255), creditValues VARCHAR(255), PRIMARY KEY(id))'
+//     let sql2 = 'CREATE TABLE transactions (id int AUTO_INCREMENT, transactionDate VARCHAR(20), debitAccounts VARCHAR(255), debitValues VARCHAR(255), creditAccounts VARCHAR(255), creditValues VARCHAR(255), PRIMARY KEY(id))'
 //     db.query(sql2, err => {
 //         if (err) {
 //             throw err;
@@ -125,10 +125,7 @@ app.post('/createTransaction', async(req, res) => {
         debitAmounts = ''
         creditAccountsB = ''
         creditAmounts = ''
-        todaysDate = new Date();
-        // .toLocaleString('en-US', {
-        //     timeZone: 'Asia/Karachi',
-        // });
+        todaysDate = new Date().toJSON().slice(0, 10);
         if (typeof(req.body.debitAccName) === 'object') {
             for (let i = 0; i < req.body.debitAccAmount.length - 1; i++) {
                 debitAccountsB += String(req.body.debitAccName[i]) + ',';
@@ -151,11 +148,6 @@ app.post('/createTransaction', async(req, res) => {
             creditAccountsB = req.body.creditAccName
             creditAmounts = req.body.creditAccAmount
         }
-        console.log("D Acc", debitAccountsB)
-        console.log("D Am", debitAmounts)
-        console.log("C Acc", creditAccountsB)
-        console.log("C Am", creditAmounts)
-
 
         let rec = { transactionDate: todaysDate, debitAccounts: debitAccountsB, debitValues: debitAmounts, creditAccounts: creditAccountsB, creditValues: creditAmounts };
         let sql = 'INSERT INTO transactions set ?'
@@ -173,7 +165,6 @@ app.post('/createTransaction', async(req, res) => {
     res.redirect('/addTransaction');
 
 })
-
 
 
 // Data APIs:
@@ -195,4 +186,17 @@ app.get('/checkConnection', (req, res) => {
         database: db._connectCalled
     }
     res.send(JSON.stringify(data))
+})
+
+app.get('/allTransactionsData', (req, res) => {
+    var data;
+    let sql = 'SELECT * FROM transactions;'
+    db.query(sql, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        console.log('Selected All');
+        data = JSON.stringify(result)
+        res.send(data);
+    });
 })
