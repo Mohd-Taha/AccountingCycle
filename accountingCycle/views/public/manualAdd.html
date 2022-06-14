@@ -596,7 +596,7 @@
                 document.getElementById('debitAccSelect0').innerHTML = "";
                 for (let i = 0; i < data.length; i++) {
                     let opt = new Option(data[i].name, data[i].name)
-                    allAccountsString += `<option value=${data[i].name}>${data[i].name}</option>`
+                    allAccountsString += `<option value="${data[i].name}">${data[i].name}</option>`
                     document.getElementById('creditAccSelect0').appendChild(opt)
                 }
                 for (let i = 0; i < data.length; i++) {

@@ -121,23 +121,51 @@ app.post('/createAccount', async(req, res) => {
 
 app.post('/createTransaction', async(req, res) => {
     try {
-        console.log(req.body);
-        // accName = req.body.name;
-        // accType = req.body.type;
-        // accContact = req.body.contact;
-        // accEmail = req.body.email;
-        // accAdd = req.body.address;
-        // accAbout = req.body.about;
-
-        // let rec = { name: accName, type: accType, contact: accContact, email: accEmail, address: accAdd, about: accAbout };
-        // let sql = 'INSERT INTO accounts set ?'
-        // db.query(sql, rec, err => {
-        //     if (err) {
-        //         throw err;
-        //     }
-        //     console.log("Record Inserted");
+        debitAccountsB = ''
+        debitAmounts = ''
+        creditAccountsB = ''
+        creditAmounts = ''
+        todaysDate = new Date();
+        // .toLocaleString('en-US', {
+        //     timeZone: 'Asia/Karachi',
         // });
-        // console.log(rec)
+        if (typeof(req.body.debitAccName) === 'object') {
+            for (let i = 0; i < req.body.debitAccAmount.length - 1; i++) {
+                debitAccountsB += String(req.body.debitAccName[i]) + ',';
+                debitAmounts += String(req.body.debitAccAmount[i]) + ',';
+            }
+            debitAccountsB += String(req.body.debitAccName[req.body.debitAccName.length - 1]);
+            debitAmounts += String(req.body.debitAccAmount[req.body.debitAccAmount.length - 1]);
+        } else {
+            debitAccountsB = req.body.debitAccName
+            debitAmounts = req.body.debitAccAmount
+        }
+        if (typeof(req.body.creditAccName) === 'object') {
+            for (let i = 0; i < req.body.creditAccAmount.length - 1; i++) {
+                creditAccountsB += String(req.body.creditAccName[i]) + ',';
+                creditAmounts += String(req.body.creditAccAmount[i]) + ',';
+            }
+            creditAccountsB += String(req.body.creditAccName[req.body.creditAccName.length - 1]);
+            creditAmounts += String(req.body.creditAccAmount[req.body.creditAccAmount.length - 1]);
+        } else {
+            creditAccountsB = req.body.creditAccName
+            creditAmounts = req.body.creditAccAmount
+        }
+        console.log("D Acc", debitAccountsB)
+        console.log("D Am", debitAmounts)
+        console.log("C Acc", creditAccountsB)
+        console.log("C Am", creditAmounts)
+
+
+        let rec = { transactionDate: todaysDate, debitAccounts: debitAccountsB, debitValues: debitAmounts, creditAccounts: creditAccountsB, creditValues: creditAmounts };
+        let sql = 'INSERT INTO transactions set ?'
+        db.query(sql, rec, err => {
+            if (err) {
+                throw err;
+            }
+            console.log("Record Inserted");
+        });
+        console.log(rec)
     } catch (err) {
         console.log("Error In Form Post Request\n", err);
         res.sendStatus(400).send(err);
