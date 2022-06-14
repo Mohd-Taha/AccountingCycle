@@ -61,7 +61,6 @@ app.post('/createAccount', async(req, res) => {
             console.log("Record Inserted");
         });
         console.log(rec)
-
     } catch (err) {
         console.log("Error In Form Post Request\n", err);
         res.sendStatus(400).send(err);

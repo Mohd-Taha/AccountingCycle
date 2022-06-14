@@ -358,7 +358,7 @@
                                             </div>
                                         </div>
                                         <!-- /.card-header -->
-                                        <div class="card-body">
+                                        <div class="card-body" id="debitAccountsCard">
                                             <div class="row">
                                                 <div class="col-sm-8 text-center">
                                                     <label>Account Name</label>
@@ -369,7 +369,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-8 pb-2">
-                                                    <select class="form-control select2" style="width: 100%;">
+                                                    <select class="form-control select2 debitAccName" name="debitAccName0" id="debitAccSelect0" style="width: 100%;">
                                                         <option>Alabama</option>
                                                         <option>Alaska</option>
                                                         <option>California</option>
@@ -380,39 +380,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-4 pb-2">
-                                                    <input type="number" name="creditAmount" onchange="addDebit()" class="form-control " id="debit1" min="0" value="0">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-8 pb-2">
-                                                    <select class="form-control select2" style="width: 100%;">
-                                                        <option>Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-4 pb-2">
-                                                    <input type="number" name="creditAmount" onchange="addDebit()" class="form-control " id="debit2" min="0" value="0">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-8 pb-2">
-                                                    <select class="form-control select2" style="width: 100%;">
-                                                        <option>Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-4 pb-2">
-                                                    <input type="number" name="creditAmount" onchange="addDebit()" class="form-control " id="debit3" min="0" value="0">
+                                                    <input type="number" name="debitAccAmount0" onchange="addDebit()" class="form-control debitAccAmount" id="" min="0" value="0">
                                                 </div>
                                             </div>
                                         </div>
@@ -423,7 +391,7 @@
                                                     <span class="btn btn-info">Amount Debited: <b>PKR</b> <b id="sumDebit">0</b></span>
                                                 </div>
                                                 <div class="col-sm-2 text-right">
-                                                    <button type="button" id="" class="btn btn-tool btn-addDbCrAccount">
+                                                    <button type="button" id="addDebitAccount" class="btn btn-tool btn-addDbCrAccount">
                                                         <i class="fas fa-plus"></i>
                                                     </button>
                                                 </div>
@@ -446,7 +414,7 @@
                                             </div>
                                         </div>
                                         <!-- /.card-header -->
-                                        <div class="card-body">
+                                        <div class="card-body" id="creditAccountsCard">
                                             <div class="row">
                                                 <div class="col-sm-8 text-center">
                                                     <label>Account Name</label>
@@ -457,7 +425,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-8 pb-2">
-                                                    <select class="form-control select2" style="width: 100%;">
+                                                    <select class="form-control select2 creditAccName" name="creditAccName0" id="creditAccSelect0" style="width: 100%;">
                                                         <option>Alabama</option>
                                                         <option>Alaska</option>
                                                         <option>California</option>
@@ -468,39 +436,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-4 pb-2">
-                                                    <input type="number" name="creditAmount" onChange="addCredit()" class="form-control " id="credit1" min="0" value="0">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-8 pb-2">
-                                                    <select class="form-control select2" style="width: 100%;">
-                                                        <option>Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-4 pb-2">
-                                                    <input type="number" name="creditAmount" onchange="addCredit()" class="form-control " id="credit2" min="0" value="0">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-8 pb-2">
-                                                    <select class="form-control select2" style="width: 100%;">
-                                                        <option>Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-4 pb-2">
-                                                    <input type="number" name="creditAmount" onChange="addCredit()" class="form-control " id="credit3" min="0" value="0">
+                                                    <input type="number" name="creditAccAmount0" onChange="addCredit()" class="form-control creditAccAmount" id="" min="0" value="0">
                                                 </div>
                                             </div>
                                         </div>
@@ -511,7 +447,7 @@
                                                     <span class="btn btn-info">Amount Credited: <b>PKR</b> <b id="sumCredit">0</b></span>
                                                 </div>
                                                 <div class="col-sm-2 text-right">
-                                                    <button type="button" class="btn btn-tool btn-addDbCrAccount">
+                                                    <button type="button" id="addCreditAccount" class="btn btn-tool btn-addDbCrAccount">
                                                         <i class="fas fa-plus"></i>
                                                     </button>
                                                 </div>
@@ -593,29 +529,41 @@
             $('.select2').select2()
         })
 
+        var debitTransactionAccounts = 1;
+        var creditTransactionAccounts = 1;
+        var allAccountsOptionTags = [];
+
         $('#addCreditAccount').click(function() {
-            console.log("scasc")
             div = document.createElement('div')
             div.className = 'row';
-            div.innerHTML = '<div class="col-sm-8 pb-2"><select class="form-control select2" style="width: 100%;"><option>Alabama</option><option>Alaska</option><option>California</option><option>Delaware</option><option>Tennessee</option><option>Texas</option><option>Washington</option></select></div><div class="col-sm-4 pb-2"><input type="number" name="creditAmount" class="form-control " id="" min="0" value="0"></div>'
+            div.innerHTML = `<div class="col-sm-8 pb-2"><select class="form-control select2 creditAccName" name="creditAccName${creditTransactionAccounts}" style="width: 100%;"><option>Alabama</option><option>Alaska</option><option>California</option><option>Delaware</option><option>Tennessee</option><option>Texas</option><option>Washington</option></select></div><div class="col-sm-4 pb-2"><input type="number" name="creditAmount${creditTransactionAccounts}" onChange="addCredit()" class="form-control creditAccAmount" id="" min="0" value="0"></div>`;
             document.getElementById('creditAccountsCard').appendChild(div)
         })
 
+        $('#addDebitAccount').click(function() {
+            div = document.createElement('div')
+            div.className = 'row';
+            div.innerHTML = `<div class="col-sm-8 pb-2"><select class="form-control select2 debitAccName" name="debitAccName${debitTransactionAccounts}" style="width: 100%;">${allAccountsOptionTags}</select></div><div class="col-sm-4 pb-2"><input type="number" name="debitAmount${debitTransactionAccounts}" onChange="addDebit()" class="form-control debitAccAmount" id="" min="0" value="0"></div>`;
+            document.getElementById('debitAccountsCard').appendChild(div)
+        })
+
         function addDebit() {
-            val1 = parseInt(document.getElementById('debit1').value);
-            val2 = parseInt(document.getElementById('debit2').value);
-            val3 = parseInt(document.getElementById('debit3').value);
-            sum = val1 + val2 + val3;
+            var debitAccList = document.getElementsByClassName('debitAccAmount');
+            let sum = 0
+            for (let i = 0; i < debitAccList.length; i++) {
+                sum += parseInt(debitAccList[i].value)
+            }
             sumDeb = document.getElementById('sumDebit');
             sumDeb.innerHTML = sum;
             balancedTransaction()
         }
 
         function addCredit() {
-            val1 = parseInt(document.getElementById('credit1').value);
-            val2 = parseInt(document.getElementById('credit2').value);
-            val3 = parseInt(document.getElementById('credit3').value);
-            sum = val1 + val2 + val3;
+            var creditAccList = document.getElementsByClassName('creditAccAmount');
+            let sum = 0;
+            for (let i = 0; i < creditAccList.length; i++) {
+                sum += parseInt(creditAccList[i].value)
+            }
             sumCre = document.getElementById('sumCredit');
             sumCre.innerHTML = sum;
             balancedTransaction()
@@ -638,6 +586,39 @@
                 balanced.style.display = 'block';
             }
         }
+    </script>
+    <script>
+        $(document).ready(() => {
+            $.get('http://localhost:3000/checkConnection', {}, function(data) {
+                data = JSON.parse(data);
+                if (data) {
+                    $("#disconnected").css("display", "none");
+                    $("#connected").css("display", "inline-block");
+                } else {
+                    $("#connected").css("display", "none");
+                    $("#disconnected").css("display", "inline-block");
+
+                }
+                console.log(data);
+            })
+        })
+
+        $(document).ready(() => {
+            $.get('http://localhost:3000/allAccountsData', {}, function(data) {
+                data = JSON.parse(data)
+                document.getElementById('creditAccSelect0').innerHTML = "";
+                document.getElementById('debitAccSelect0').innerHTML = "";
+                for (let i = 0; i < data.length; i++) {
+                    let opt = new Option(data[i].name, data[i].name)
+                    allAccountsOptionTags.push(opt)
+                    document.getElementById('creditAccSelect0').appendChild(opt)
+                }
+                for (let i = 0; i < data.length; i++) {
+                    let opt = new Option(data[i].name, data[i].name)
+                    document.getElementById('debitAccSelect0').appendChild(opt)
+                }
+            })
+        })
     </script>
     <script>
         $(function() {
@@ -680,23 +661,6 @@
             });
         });
     </script>
-    <script>
-        $(document).ready(() => {
-            $.get('http://localhost:3000/checkConnection', {}, function(data) {
-                data = JSON.parse(data);
-                if (data) {
-                    $("#disconnected").css("display", "none");
-                    $("#connected").css("display", "inline-block");
-                } else {
-                    $("#connected").css("display", "none");
-                    $("#disconnected").css("display", "inline-block");
-
-                }
-                console.log(data);
-            })
-        })
-    </script>
-
 </body>
 
 </html>
