@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Add Transaction</title>
+    <title>View Account Ledger</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -347,8 +347,8 @@
                     <div class="card-body pb-0">
                         <div class="card">
                             <div class="card-header account-header">
-                                <h3 class="card-title">Account Name :&nbsp<b>Cash</b></h3>
-                                <h3 class="card-title">Account Type :&nbsp<b>Asset</b></h3>
+                                <h3 class="card-title">Account Name :&nbsp<b id="accName"></b></h3>
+                                <h3 class="card-title">Account Type :&nbsp<b id="accType"></b></h3>
                             </div>
                             <div class="card-body row">
                                 <div class="col-md-6 col-sm-12">
@@ -437,27 +437,6 @@
                         </div> -->
                     </div>
                 </div>
-                <!-- <div class="card-body ">
-                    <button type="button " class="btn btn-success swalDefaultSuccess ">
-                      Launch Success Toast
-                    </button>
-                    <button type="button " class="btn btn-info swalDefaultInfo ">
-                      Launch Info Toast
-                    </button>
-                    <button type="button " class="btn btn-danger swalDefaultError ">
-                      Launch Error Toast
-                    </button>
-                    <button type="button " class="btn btn-warning swalDefaultWarning ">
-                      Launch Warning Toast
-                    </button>
-                    <button type="button " class="btn btn-default swalDefaultQuestion ">
-                      Launch Question Toast
-                    </button>
-                    <div class="text-muted mt-3 ">
-                        For more examples look at <a href="https://sweetalert2.github.io/ ">https://sweetalert2.github.io/</a>
-                    </div>
-                </div>  -->
-                <!-- /. Sweet Alerts card-body -->
                 <!-- /.card -->
             </section>
             <!-- /.content -->
@@ -495,47 +474,6 @@
     <!-- Select2 -->
     <script src="../plugins/select2/js/select2.full.min.js "></script>
     <script>
-        $(function() {
-            var Toast = Swal.mixin({
-                toast: true,
-                position: 'bottom-end',
-                showConfirmButton: false,
-                timer: 3000
-            });
-
-            $('.swalDefaultSuccess').click(function() {
-                Toast.fire({
-                    icon: 'success',
-                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-            $('.swalDefaultInfo').click(function() {
-                Toast.fire({
-                    icon: 'info',
-                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-            $('.swalDefaultError').click(function() {
-                Toast.fire({
-                    icon: 'error',
-                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-            $('.swalDefaultWarning').click(function() {
-                Toast.fire({
-                    icon: 'warning',
-                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-            $('.swalDefaultQuestion').click(function() {
-                Toast.fire({
-                    icon: 'question',
-                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-        });
-    </script>
-    <script>
         $(document).ready(() => {
             $.get('http://localhost:3000/checkConnection', {}, function(data) {
                 data = JSON.parse(data);
@@ -548,6 +486,18 @@
 
                 }
                 console.log(data);
+            })
+        })
+
+        $(document).ready(() => {
+            var id = document.URL.substring(document.URL.lastIndexOf('/') + 1);
+            $.get(`http://localhost:3000/showAccountLedger/${id}`, {}, function(data) {
+                data = JSON.parse(data);
+                document.getElementById("accName").innerText = data[0].name;
+                document.getElementById("accType").innerText = data[0].type;
+                for (let i = 1; i < data.length; i++) {
+                    console.log(data[i])
+                }
             })
         })
     </script>

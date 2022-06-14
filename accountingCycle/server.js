@@ -3,6 +3,7 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
 const path = require('path');
+const { resourceUsage } = require('process');
 
 const app = express();
 const static_path = path.join(__dirname, '/views');
@@ -198,5 +199,26 @@ app.get('/allTransactionsData', (req, res) => {
         console.log('Selected All');
         data = JSON.stringify(result)
         res.send(data);
+    });
+})
+
+app.get('/showAccountLedger/:id', (req, res) => {
+    var id = req.url.substring(req.url.lastIndexOf('/') + 1);
+    let sql = `SELECT * FROM accounts WHERE id=${id}`
+    db.query(sql, (err, result) => {
+        if (err) {
+            throw err;
+        } else {
+            let sql2 = `SELECT * FROM transactions WHERE INSTR(debitAccounts,'${result[0].name}') > 0 OR INSTR(creditAccounts,'${result[0].name}') > 0`
+            db.query(sql2, (err, result2) => {
+                if (err) {
+                    throw err;
+                }
+                console.log('Selected Transactions');
+                result = [...result, ...result2]
+                data = JSON.stringify(result)
+                res.send(data);
+            });
+        }
     });
 })
