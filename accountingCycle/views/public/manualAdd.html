@@ -344,126 +344,114 @@
                 <!-- Default box -->
                 <div class="card card-solid">
                     <div class="card-body pb-0">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                                <div>
-                                    <!-- SELECT2 EXAMPLE -->
-                                    <div class="card card-default">
-                                        <div class="card-header text-center">
-                                            <h3 class="card-title btn btn-warning" title="Liabilities, Revenues and Capital Increases This Side.">DEBIT ACCOUNTS</h3>
-                                            <div class="card-tools">
-                                                <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                    <i class="fas fa-minus"></i>
-                                                </button> -->
-                                            </div>
-                                        </div>
-                                        <!-- /.card-header -->
-                                        <div class="card-body" id="debitAccountsCard">
-                                            <div class="row">
-                                                <div class="col-sm-8 text-center">
-                                                    <label>Account Name</label>
-                                                </div>
-                                                <div class="col-sm-4 text-center">
-                                                    <label>Amount</label>
+                        <form method="POST" action="/createTransaction">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <div>
+                                        <!-- SELECT2 EXAMPLE -->
+                                        <div class="card card-default">
+                                            <div class="card-header text-center">
+                                                <h3 class="card-title btn btn-warning" title="Liabilities, Revenues and Capital Increases This Side.">DEBIT ACCOUNTS</h3>
+                                                <div class="card-tools">
+                                                    <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                        <i class="fas fa-minus"></i>
+                                                    </button> -->
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-sm-8 pb-2">
-                                                    <select class="form-control select2 debitAccName" name="debitAccName0" id="debitAccSelect0" style="width: 100%;">
-                                                        <option>Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
-                                                    </select>
+                                            <!-- /.card-header -->
+                                            <div class="card-body" id="debitAccountsCard">
+                                                <div class="row">
+                                                    <div class="col-sm-8 text-center">
+                                                        <label>Account Name</label>
+                                                    </div>
+                                                    <div class="col-sm-4 text-center">
+                                                        <label>Amount</label>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-4 pb-2">
-                                                    <input type="number" name="debitAccAmount0" onchange="addDebit()" class="form-control debitAccAmount" id="" min="0" value="0">
+                                                <div class="row">
+                                                    <div class="col-sm-8 pb-2">
+                                                        <select class="form-control select2 debitAccName" name="debitAccName" id="debitAccSelect0" style="width: 100%;">
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-4 pb-2">
+                                                        <input type="number" name="debitAccAmount" onchange="addDebit()" class="form-control debitAccAmount" id="" min="0" value="0">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- /.row -->
-                                        <div class="card-footer">
-                                            <div class="row">
-                                                <div class="col-sm-10">
-                                                    <span class="btn btn-info">Amount Debited: <b>PKR</b> <b id="sumDebit">0</b></span>
-                                                </div>
-                                                <div class="col-sm-2 text-right">
-                                                    <button type="button" id="addDebitAccount" class="btn btn-tool btn-addDbCrAccount">
-                                                        <i class="fas fa-plus"></i>
-                                                    </button>
+                                            <!-- /.row -->
+                                            <div class="card-footer">
+                                                <div class="row">
+                                                    <div class="col-sm-10">
+                                                        <span class="btn btn-info">Amount Debited: <b>PKR</b> <b id="sumDebit">0</b></span>
+                                                    </div>
+                                                    <div class="col-sm-2 text-right">
+                                                        <button type="button" id="addDebitAccount" class="btn btn-tool btn-addDbCrAccount">
+                                                            <i class="fas fa-plus"></i>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <!-- /.card-body -->
                                     </div>
-                                    <!-- /.card-body -->
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div>
+                                        <!-- SELECT2 EXAMPLE -->
+                                        <div class="card card-default">
+                                            <div class="card-header text-center">
+                                                <h3 class="card-title btn btn-warning" title="Liabilities, Revenues and Capital Increases This Side.">CREDIT ACCOUNTS</h3>
+                                                <div class="card-tools">
+                                                    <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                        <i class="fas fa-minus"></i>
+                                                    </button> -->
+                                                </div>
+                                            </div>
+                                            <!-- /.card-header -->
+                                            <div class="card-body" id="creditAccountsCard">
+                                                <div class="row">
+                                                    <div class="col-sm-8 text-center">
+                                                        <label>Account Name</label>
+                                                    </div>
+                                                    <div class="col-sm-4 text-center">
+                                                        <label>Amount</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-8 pb-2">
+                                                        <select class="form-control select2 creditAccName" name="creditAccName" id="creditAccSelect0" style="width: 100%;">
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-4 pb-2">
+                                                        <input type="number" name="creditAccAmount" onChange="addCredit()" class="form-control creditAccAmount" id="" min="0" value="0">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.row -->
+                                            <div class="card-footer">
+                                                <div class="row">
+                                                    <div class="col-sm-10">
+                                                        <span class="btn btn-info">Amount Credited: <b>PKR</b> <b id="sumCredit">0</b></span>
+                                                    </div>
+                                                    <div class="col-sm-2 text-right">
+                                                        <button type="button" id="addCreditAccount" class="btn btn-tool btn-addDbCrAccount">
+                                                            <i class="fas fa-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-12">
-                                <div>
-                                    <!-- SELECT2 EXAMPLE -->
-                                    <div class="card card-default">
-                                        <div class="card-header text-center">
-                                            <h3 class="card-title btn btn-warning" title="Liabilities, Revenues and Capital Increases This Side.">CREDIT ACCOUNTS</h3>
-                                            <div class="card-tools">
-                                                <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                    <i class="fas fa-minus"></i>
-                                                </button> -->
-                                            </div>
-                                        </div>
-                                        <!-- /.card-header -->
-                                        <div class="card-body" id="creditAccountsCard">
-                                            <div class="row">
-                                                <div class="col-sm-8 text-center">
-                                                    <label>Account Name</label>
-                                                </div>
-                                                <div class="col-sm-4 text-center">
-                                                    <label>Amount</label>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-8 pb-2">
-                                                    <select class="form-control select2 creditAccName" name="creditAccName0" id="creditAccSelect0" style="width: 100%;">
-                                                        <option>Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-4 pb-2">
-                                                    <input type="number" name="creditAccAmount0" onChange="addCredit()" class="form-control creditAccAmount" id="" min="0" value="0">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /.row -->
-                                        <div class="card-footer">
-                                            <div class="row">
-                                                <div class="col-sm-10">
-                                                    <span class="btn btn-info">Amount Credited: <b>PKR</b> <b id="sumCredit">0</b></span>
-                                                </div>
-                                                <div class="col-sm-2 text-right">
-                                                    <button type="button" id="addCreditAccount" class="btn btn-tool btn-addDbCrAccount">
-                                                        <i class="fas fa-plus"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.card-body -->
-                                </div>
-                                <!-- /.card -->
+                            <div class="transactionButtonDiv">
+                                <p class="btn btn-success balancingTransaction" id="balancedTransaction" title="Sum of Accounts Debited is EQUAL to Sum of Accounts Credited.">BALANCED TRANSACTION</p>
+                                <p class="btn btn-danger balancingTransaction imbalanced" id="imbalanceTransaction" title="Sum of Accounts Debited is NOT EQUAL to Sum of Accounts Credited.">IM-BALANCE TRANSACTION</p>
+                                <button class="btn btn-primary balancingTransaction" style="height: 40px;" type="submit">ADD TRANSACTION</button>
                             </div>
-                        </div>
-                        <div class="transactionButtonDiv">
-                            <p class="btn btn-success balancingTransaction" id="balancedTransaction" title="Sum of Accounts Debited is EQUAL to Sum of Accounts Credited.">BALANCED TRANSACTION</p>
-                            <p class="btn btn-danger balancingTransaction imbalanced" id="imbalanceTransaction" title="Sum of Accounts Debited is NOT EQUAL to Sum of Accounts Credited.">IM-BALANCE TRANSACTION</p>
-                            <p class="btn btn-primary balancingTransaction">ADD TRANSACTION</p>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <div class="card-body">
@@ -529,21 +517,19 @@
             $('.select2').select2()
         })
 
-        var debitTransactionAccounts = 1;
-        var creditTransactionAccounts = 1;
-        var allAccountsOptionTags = [];
+        var allAccountsString = '';
 
         $('#addCreditAccount').click(function() {
             div = document.createElement('div')
             div.className = 'row';
-            div.innerHTML = `<div class="col-sm-8 pb-2"><select class="form-control select2 creditAccName" name="creditAccName${creditTransactionAccounts}" style="width: 100%;"><option>Alabama</option><option>Alaska</option><option>California</option><option>Delaware</option><option>Tennessee</option><option>Texas</option><option>Washington</option></select></div><div class="col-sm-4 pb-2"><input type="number" name="creditAmount${creditTransactionAccounts}" onChange="addCredit()" class="form-control creditAccAmount" id="" min="0" value="0"></div>`;
+            div.innerHTML = `<div class="col-sm-8 pb-2"><select class="form-control select2 creditAccName" name="creditAccName" style="width: 100%;">${allAccountsString}</select></div><div class="col-sm-4 pb-2"><input type="number" name="creditAmount" onChange="addCredit()" class="form-control creditAccAmount" id="" min="0" value="0"></div>`;
             document.getElementById('creditAccountsCard').appendChild(div)
         })
 
         $('#addDebitAccount').click(function() {
             div = document.createElement('div')
             div.className = 'row';
-            div.innerHTML = `<div class="col-sm-8 pb-2"><select class="form-control select2 debitAccName" name="debitAccName${debitTransactionAccounts}" style="width: 100%;">${allAccountsOptionTags}</select></div><div class="col-sm-4 pb-2"><input type="number" name="debitAmount${debitTransactionAccounts}" onChange="addDebit()" class="form-control debitAccAmount" id="" min="0" value="0"></div>`;
+            div.innerHTML = `<div class="col-sm-8 pb-2"><select class="form-control select2 debitAccName" name="debitAccName" style="width: 100%;">${allAccountsString}</select></div><div class="col-sm-4 pb-2"><input type="number" name="debitAccAmount" onChange="addDebit()" class="form-control debitAccAmount" id="" min="0" value="0"></div>`;
             document.getElementById('debitAccountsCard').appendChild(div)
         })
 
@@ -610,7 +596,7 @@
                 document.getElementById('debitAccSelect0').innerHTML = "";
                 for (let i = 0; i < data.length; i++) {
                     let opt = new Option(data[i].name, data[i].name)
-                    allAccountsOptionTags.push(opt)
+                    allAccountsString += `<option value=${data[i].name}>${data[i].name}</option>`
                     document.getElementById('creditAccSelect0').appendChild(opt)
                 }
                 for (let i = 0; i < data.length; i++) {
