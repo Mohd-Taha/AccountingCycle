@@ -195,7 +195,6 @@ app.get('/onlyAccountData/:id', (req, res) => {
     });
 })
 
-
 app.get('/checkConnection', (req, res) => {
     data = {
         database: db._connectCalled
