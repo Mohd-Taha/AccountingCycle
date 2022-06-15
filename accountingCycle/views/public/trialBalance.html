@@ -359,7 +359,7 @@
                                             <th>Credit (PKR)</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="tableBody">
                                         <tr>
                                             <td>1</td>
                                             <td>Asset</td>
@@ -486,8 +486,15 @@
                                             <td>4,000</td>
                                             <td></td>
                                         </tr>
+                                        <tr class="text-center" style="display: none;">
+                                            <th>Total</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th>12,21,000</th>
+                                            <th>12,21,000</th>
+                                        </tr>
                                     </tbody>
-                                    <tfoot>
+                                    <tfoot id="tableFoot">
                                         <tr class="text-center">
                                             <th></th>
                                             <th>Total</th>
@@ -553,15 +560,6 @@
                 "autoWidth": false,
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
         });
     </script>
     <script>
@@ -576,6 +574,47 @@
                     $("#disconnected").css("display", "inline-block");
                 }
                 // console.log(data);
+            })
+        })
+
+        $(document).ready(() => {
+            $.get('http://localhost:3000/allAccountsData', {}, function(data) {
+                data = JSON.parse(data);
+                for (let i = 0; i < data.length; i++) {
+                    $.get(`http://localhost:3000/showAccountLedger/${data[i].id}`, {}, function(data2) {
+                        let account = data[i].name
+                        let accType = data[i].type
+                        let debSum = 0;
+                        let credSum = 0;
+                        data2 = JSON.parse(data2);
+                        for (let j = 1; j < data2.length; j++) {
+                            if (data2[j].debitAccounts === account) {
+                                debSum += parseInt(data2[j].debitValues)
+                            } else if (data2[j].creditAccounts === account) {
+                                credSum += parseInt(data2[j].creditValues)
+                            } else if (data2[j].debitAccounts.includes(account)) {
+                                let debAccs = data2[j].debitAccounts.split(',')
+                                let debVals = data2[j].debitValues.split(',')
+                                let index = debAccs.indexOf(account)
+                                debSum += parseInt(debVals[index])
+                            } else if (data2[j].creditAccounts.includes(account)) {
+                                let credAccs = data2[j].creditAccounts.split(',')
+                                let credVals = data2[j].creditValues.split(',')
+                                let index = credAccs.indexOf(account)
+                                credSum += parseInt(credVals[index])
+                            }
+                        }
+                        if (debSum !== credSum) {
+                            debSum -= credSum
+                            let obj = {
+                                name: account,
+                                type: accType,
+                                amount: debSum
+                            }
+                            console.log(obj)
+                        }
+                    })
+                }
             })
         })
     </script>

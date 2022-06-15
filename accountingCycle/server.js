@@ -222,7 +222,7 @@ app.get('/showAccountLedger/:id', (req, res) => {
         if (err) {
             throw err;
         } else {
-            let sql2 = `SELECT * FROM transactions WHERE INSTR(debitAccounts,'${result[0].name}') > 0 OR INSTR(creditAccounts,'${result[0].name}') > 0`
+            let sql2 = `SELECT * FROM transactions WHERE INSTR(debitAccounts,"${result[0].name}") > 0 OR INSTR(creditAccounts,"${result[0].name}") > 0`
             db.query(sql2, (err, result2) => {
                 if (err) {
                     throw err;
