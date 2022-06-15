@@ -182,6 +182,20 @@ app.get('/allAccountsData', (req, res) => {
     });
 })
 
+app.get('/onlyAccountData/:id', (req, res) => {
+    var id = req.url.substring(req.url.lastIndexOf('/') + 1);
+    let sql = `SELECT * FROM accounts WHERE id=${id}`
+    db.query(sql, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        console.log(`Selected ID: ${id}`);
+        data = JSON.stringify(result)
+        res.send(data);
+    });
+})
+
+
 app.get('/checkConnection', (req, res) => {
     data = {
         database: db._connectCalled

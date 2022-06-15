@@ -235,7 +235,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="/addTransaction" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Manual</p>
                                     </a>
@@ -252,7 +252,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="/addTransaction" class="nav-link">
+                            <a href="/journal" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
                                     General Journal
@@ -362,7 +362,7 @@
                                         <div class="col-sm-8">
                                             <p class="text-center">Amount (PKR)</p>
                                         </div>
-                                        <ul class="list-group list-group-flush" style="width: 100%;">
+                                        <ul class="list-group list-group-flush" style="width: 100%;" id="debitTrans">
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-sm-4 text-center">GJ</div>
@@ -389,7 +389,7 @@
                                         <div class="col-sm-8">
                                             <p class="text-center">Amount (PKR)</p>
                                         </div>
-                                        <ul class="list-group list-group-flush" style="width: 100%;">
+                                        <ul class="list-group list-group-flush" style="width: 100%;" id="creditTrans">
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-sm-4 text-center">GJ</div>
@@ -422,10 +422,10 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-md-6 col-sm-12 text-center">
-                                        <span class="mobile">Total Debited</span> PKR <b>2,35,000</b>
+                                        <span class="mobile">Total Debited</span> PKR <b id="debitSum">2,35,000</b>
                                     </div>
                                     <div class="col-md-6 col-sm-12 text-center web-border">
-                                        <span class="mobile">Total Credited</span> PKR <b>2,35,000</b>
+                                        <span class="mobile">Total Credited</span> PKR <b id="creditSum">2,35,000</b>
                                     </div>
                                 </div>
                             </div>
@@ -485,7 +485,7 @@
                     $("#disconnected").css("display", "inline-block");
 
                 }
-                console.log(data);
+                // console.log(data);
             })
         })
 
@@ -493,11 +493,39 @@
             var id = document.URL.substring(document.URL.lastIndexOf('/') + 1);
             $.get(`http://localhost:3000/showAccountLedger/${id}`, {}, function(data) {
                 data = JSON.parse(data);
-                document.getElementById("accName").innerText = data[0].name;
+                account = data[0].name
+                document.getElementById("accName").innerText = account;
                 document.getElementById("accType").innerText = data[0].type;
+                debSum = credSum = 0
+                debitTransactions = '';
+                creditTransactions = '';
                 for (let i = 1; i < data.length; i++) {
                     console.log(data[i])
+                    if (data[i].debitAccounts === account) {
+                        debitTransactions += `<li class="list-group-item"><div class="row"><div class="col-sm-4 text-center">GJ</div><div class="col-sm-8 text-center">${data[i].debitValues}</div></div></li>`
+                        debSum += parseInt(data[i].debitValues)
+                    } else if (data[i].creditAccounts === account) {
+                        creditTransactions += `<li class="list-group-item"><div class="row"><div class="col-sm-4 text-center">GJ</div><div class="col-sm-8 text-center">${data[i].creditValues}</div></div></li>`
+                        credSum += parseInt(data[i].creditValues)
+                    } else if (data[i].debitAccounts.includes(account)) {
+                        let debAccs = data[i].debitAccounts.split(',')
+                        let debVals = data[i].debitValues.split(',')
+                        let index = debAccs.indexOf(account)
+                        debitTransactions += `<li class="list-group-item"><div class="row"><div class="col-sm-4 text-center">GJ</div><div class="col-sm-8 text-center">${debVals[index]}</div></div></li>`
+                        debSum += parseInt(debVals[index])
+                    } else if (data[i].creditAccounts.includes(account)) {
+                        let credAccs = data[i].creditAccounts.split(',')
+                        let credVals = data[i].creditValues.split(',')
+                        let index = credAccs.indexOf(account)
+                        creditTransactions += `<li class="list-group-item"><div class="row"><div class="col-sm-4 text-center">GJ</div><div class="col-sm-8 text-center">${credVals[index]}</div></div></li>`
+                        credSum += parseInt(credVals[index])
+                    }
                 }
+                document.getElementById("debitTrans").innerHTML = debitTransactions;
+                document.getElementById("debitSum").innerText = debSum;
+
+                document.getElementById("creditTrans").innerHTML = creditTransactions;
+                document.getElementById("creditSum").innerText = credSum;
             })
         })
     </script>

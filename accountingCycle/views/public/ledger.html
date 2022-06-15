@@ -540,7 +540,7 @@
                 var capitalHTML = "";
                 data = JSON.parse(data)
                 for (let i=0; i < data.length; i++) {
-                    var card = `<div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column"><div class="card bg-light d-flex flex-fill"><div class="card-header text-muted border-bottom-0"></div><div class="card-body pt-0"><div class="row pb-2 mb-1" style="border-bottom: 1px solid;"><div class="col-6"><h2 class="lead"><b>${data[i].name}</b></h2><p class="text-muted text-sm">${data[i].about}</p></div><div class="col-6"><ul class="ml-4 mb-0 fa-ul text-muted"><li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span> <b>Email: </b><br/> <span>${data[i].email}</span></li><li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> <b>Contact: </b><br/> <span>${data[i].contact}</span></li><li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> <b>Address: </b><br/> <span>${data[i].address}</span></li></ul></div></div><div class="row"><div class="col-6 text-center"><span class="text-muted text-sm"><b>DEBIT</b><br/>PKR <strong>0</strong></span></div><div class="col-6 text-center"><span class="text-muted text-sm"><b>CREDIT</b><br/>PKR <strong>0</strong></span></div></div></div><div class="card-footer"><div class="text-right"><a href="/accountLedger/${data[i].id}" class="btn btn-sm btn-primary"><i class="fas fa-columns"></i>&nbsp View Ledger</a></div></div></div></div>`;
+                    var card = `<div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column"><div class="card bg-light d-flex flex-fill"><div class="card-header text-muted border-bottom-0"></div><div class="card-body pt-0"><div class="row"><div class="col-6"><h2 class="lead"><b>${data[i].name}</b></h2><p class="text-muted text-sm">${data[i].about}</p></div><div class="col-6"><ul class="ml-4 mb-0 fa-ul text-muted"><li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span> <b>Email: </b><br/> <span>${data[i].email}</span></li><li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> <b>Contact: </b><br/> <span>${data[i].contact}</span></li><li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> <b>Address: </b><br/> <span>${data[i].address}</span></li></ul></div></div></div><div class="card-footer"><div class="text-right"><a href="/accountLedger/${data[i].id}" class="btn btn-sm btn-primary"><i class="fas fa-columns"></i>&nbsp View Ledger</a></div></div></div></div>`;
                     switch (data[i].type) {
                         case "Asset":
                             assetHTML += card;
@@ -583,7 +583,7 @@
                     $("#disconnected").css("display", "inline-block");
 
                 }
-                console.log(data);
+                // console.log(data);
             })
         })
 

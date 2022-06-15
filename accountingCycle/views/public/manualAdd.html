@@ -374,7 +374,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-sm-4 pb-2">
-                                                        <input type="number" name="debitAccAmount" onchange="addDebit()" class="form-control debitAccAmount" id="" min="0" value="0">
+                                                        <input type="number" name="debitAccAmount" onkeyup="addDebit()" class="form-control debitAccAmount" id="" min="0" value="0">
                                                     </div>
                                                 </div>
                                             </div>
@@ -423,7 +423,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-sm-4 pb-2">
-                                                        <input type="number" name="creditAccAmount" onChange="addCredit()" class="form-control creditAccAmount" id="" min="0" value="0">
+                                                        <input type="number" name="creditAccAmount" onkeyup="addCredit()" class="form-control creditAccAmount" id="" min="0" value="0">
                                                     </div>
                                                 </div>
                                             </div>
@@ -522,14 +522,14 @@
         $('#addCreditAccount').click(function() {
             div = document.createElement('div')
             div.className = 'row';
-            div.innerHTML = `<div class="col-sm-8 pb-2"><select class="form-control select2 creditAccName" name="creditAccName" style="width: 100%;">${allAccountsString}</select></div><div class="col-sm-4 pb-2"><input type="number" name="creditAccAmount" onChange="addCredit()" class="form-control creditAccAmount" id="" min="0" value="0"></div>`;
+            div.innerHTML = `<div class="col-sm-8 pb-2"><select class="form-control select2 creditAccName" name="creditAccName" style="width: 100%;">${allAccountsString}</select></div><div class="col-sm-4 pb-2"><input type="number" name="creditAccAmount" onkeyup="addCredit()" class="form-control creditAccAmount" id="" min="0" value="0"></div>`;
             document.getElementById('creditAccountsCard').appendChild(div)
         })
 
         $('#addDebitAccount').click(function() {
             div = document.createElement('div')
             div.className = 'row';
-            div.innerHTML = `<div class="col-sm-8 pb-2"><select class="form-control select2 debitAccName" name="debitAccName" style="width: 100%;">${allAccountsString}</select></div><div class="col-sm-4 pb-2"><input type="number" name="debitAccAmount" onChange="addDebit()" class="form-control debitAccAmount" id="" min="0" value="0"></div>`;
+            div.innerHTML = `<div class="col-sm-8 pb-2"><select class="form-control select2 debitAccName" name="debitAccName" style="width: 100%;">${allAccountsString}</select></div><div class="col-sm-4 pb-2"><input type="number" name="debitAccAmount" onkeyup="addDebit()" class="form-control debitAccAmount" id="" min="0" value="0"></div>`;
             document.getElementById('debitAccountsCard').appendChild(div)
         })
 
@@ -590,7 +590,7 @@
                     $("#connected").css("display", "none");
                     $("#disconnected").css("display", "inline-block");
                 }
-                console.log(data);
+                // console.log(data);
             })
         })
 

@@ -1,0 +1,76 @@
+//In General Journal
+$(document).ready(() => {
+    $.get('http://localhost:3000/allTransactionsData', {}, function(data) {
+        data = JSON.parse(data);
+        document.getElementById('tableBody').innerHTML = ""
+        for (let i = 0; i < data.length; i++) {
+            var sno = i + 1
+            if (data[i].debitAccounts.includes(',')) {
+                debAccs = data[i].debitAccounts.split(',')
+                debVals = data[i].debitValues.split(',')
+                for (let j = 0; j < debAccs.length; j++) {
+                    $.get(`http://localhost:3000/onlyAccountData/${debAccs[j]}`, {}, function(data2) {
+                        data2 = JSON.parse(data2)
+                        tableEntries += `<tr><td>${sno}</td><td>${data[i].transactionDate}</td><td>${data2.name}</td><td>${debVals[j]}</td><td></td></tr>`
+                    })
+                }
+            } else {
+                $.get(`http://localhost:3000/onlyAccountData/${data[i].debitAccounts}`, {}, function(data2) {
+                    data2 = JSON.parse(data2)
+                    tableEntries += `<tr><td>${sno}</td><td>${data[i].transactionDate}</td><td>${data2.name}</td><td>${data[i].debitValues}</td><td></td></tr>`
+                })
+            }
+
+            if (data[i].creditAccounts.includes(',')) {
+                credAccs = data[i].creditAccounts.split(',')
+                credVals = data[i].creditValues.split(',')
+                for (let j = 0; j < credAccs.length; j++) {
+                    $.get(`http://localhost:3000/onlyAccountData/${credAccs[j]}`, {}, function(data2) {
+                        data2 = JSON.parse(data2)
+                        tableEntries += `<tr><td>${sno}</td><td>${data[i].transactionDate}</td><td><span class="creditTr">&nbsp</span>${data2.name}</td><td>${credVals[j]}</td><td></td></tr>`
+                    })
+                }
+            } else {
+                $.get(`http://localhost:3000/onlyAccountData/${data[i].creditAccounts}`, {}, function(data2) {
+                    data2 = JSON.parse(data2)
+                    tableEntries += `<tr><td>${sno}</td><td>${data[i].transactionDate}</td><td><span class="creditTr">&nbsp</span>${data2.name}</td><td>${data[i].creditValues}</td><td></td></tr>`
+                })
+            }
+        }
+        document.getElementById('tableBody').innerHTML = tableEntries
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        });
+    })
+})
+
+
+//In Manual Add
+$(document).ready(() => {
+    $.get('http://localhost:3000/allAccountsData', {}, function(data) {
+        data = JSON.parse(data)
+        document.getElementById('creditAccSelect0').innerHTML = "";
+        document.getElementById('debitAccSelect0').innerHTML = "";
+        for (let i = 0; i < data.length; i++) {
+            let opt = new Option(data[i].name, data[i].id)
+            allAccountsString += `<option value="${data[i].name}">${data[i].id}</option>`
+            document.getElementById('creditAccSelect0').appendChild(opt)
+        }
+        for (let i = 0; i < data.length; i++) {
+            let opt = new Option(data[i].name, data[i].id)
+            document.getElementById('debitAccSelect0').appendChild(opt)
+        }
+    })
+})
+
+.
+.
+.
+
+//Ledger 
+<div class="row"><div class="col-6 text-center"><span class="text-muted text-sm"><b>DEBIT</b><br/>PKR <strong>0</strong></span></div><div class="col-6 text-center"><span class="text-muted text-sm"><b>CREDIT</b><br/>PKR <strong>0</strong></span></div></div>
