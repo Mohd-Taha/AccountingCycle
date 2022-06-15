@@ -349,10 +349,9 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table id="example1" class="table table-striped">
+                                <table id="example1" class="table table-striped table-bordered">
                                     <thead>
                                         <tr class="text-center">
-                                            <th>S No#</th>
                                             <th>Heads</th>
                                             <th style="min-width: 400px;">Transaction Account</th>
                                             <th>Debit (PKR)</th>
@@ -360,84 +359,13 @@
                                         </tr>
                                     </thead>
                                     <tbody id="tableBody">
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Asset</td>
-                                            <td>Cash</td>
-                                            <td>1,98,000</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Asset</td>
-                                            <td>Accounts Receiveable</td>
-                                            <td>3,82,000</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Asset</td>
-                                            <td>Supplies</td>
-                                            <td>2000</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Asset</td>
-                                            <td>F & F Properties</td>
-                                            <td>1,00,000</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Asset</td>
-                                            <td>Acc. Dep. F & F Properties</td>
-                                            <td></td>
-                                            <td>60,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>Asset</td>
-                                            <td>Building</td>
-                                            <td>2,50,000</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>7</td>
-                                            <td>Asset</td>
-                                            <td>Acc. Dep. Building</td>
-                                            <td></td>
-                                            <td>1,40,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>8</td>
-                                            <td>Liability</td>
-                                            <td>Accounts Payable</td>
-                                            <td></td>
-                                            <td>3,80,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>9</td>
-                                            <td>Liability</td>
-                                            <td>Un Earned Service Revenue</td>
-                                            <td></td>
-                                            <td>13,000</td>
-                                        </tr>
-                                        <tr class="text-center" style="display: none;">
-                                            <th>Total</th>
-                                            <th></th>
-                                            <th></th>
-                                            <th>12,21,000</th>
-                                            <th>12,21,000</th>
-                                        </tr>
                                     </tbody>
-                                    <tfoot id="tableFoot">
+                                    <tfoot>
                                         <tr class="text-center">
-                                            <th></th>
                                             <th>Total</th>
                                             <th></th>
-                                            <th>12,21,000</th>
-                                            <th>12,21,000</th>
+                                            <th>0</th>
+                                            <th>0</th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -489,16 +417,7 @@
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        });
-    </script>
+    <script src="./myFiles/trialBalance.js"></script>
     <script>
         $(document).ready(() => {
             $.get('http://localhost:3000/checkConnection', {}, function(data) {
@@ -517,6 +436,9 @@
         $(document).ready(() => {
             $.get('http://localhost:3000/allAccountsData', {}, function(data) {
                 data = JSON.parse(data);
+                tableHTML = '';
+                totalDeb = totalCred = 0;
+                flag = true;
                 for (let i = 0; i < data.length; i++) {
                     $.get(`http://localhost:3000/showAccountLedger/${data[i].id}`, {}, function(data2) {
                         let account = data[i].name
@@ -525,6 +447,7 @@
                         let credSum = 0;
                         data2 = JSON.parse(data2);
                         for (let j = 1; j < data2.length; j++) {
+                            flag = false;
                             if (data2[j].debitAccounts === account) {
                                 debSum += parseInt(data2[j].debitValues)
                             } else if (data2[j].creditAccounts === account) {
@@ -543,12 +466,31 @@
                         }
                         if (debSum !== credSum) {
                             debSum -= credSum
-                            let obj = {
-                                name: account,
-                                type: accType,
-                                amount: debSum
+                            if (debSum > 0) {
+                                tableHTML += `<tr><td>${accType}</td><td>${account}</td><td>${debSum}</td><td></td></tr>`;
+                                totalDeb += debSum;
+                            } else {
+                                debSum = -1 * debSum;
+                                tableHTML += `<tr><td>${accType}</td><td>${account}</td><td></td><td>${debSum}</td></tr>`;
+                                totalCred += debSum;
                             }
-                            console.log(obj)
+                            if (i === data.length - 1) {
+                                tableHTML += `<tr class="text-center" style="display: none;"><th>Total</th><th></th><th>${totalDeb}</th><th>${totalCred}</th></tr>`
+                                document.getElementById('tableBody').innerHTML = tableHTML;
+                                document.getElementById('footTotalDeb').innerText = totalDeb;
+                                document.getElementById('footTotalCred').innerText = totalCred;
+                            }
+                        }
+                        if (flag && i === data.length - 1) {
+                            $(function() {
+                                $("#example1").DataTable({
+                                    "responsive": true,
+                                    "lengthChange": false,
+                                    "autoWidth": false,
+                                    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                                }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+                            });
+
                         }
                     })
                 }
