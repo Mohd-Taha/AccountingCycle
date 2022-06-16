@@ -364,8 +364,8 @@
                                         <tr class="text-center">
                                             <th>Total</th>
                                             <th></th>
-                                            <th>0</th>
-                                            <th>0</th>
+                                            <th id="footTotalDeb">0</th>
+                                            <th id="footTotalCred">0</th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -417,7 +417,6 @@
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
-    <script src="./myFiles/trialBalance.js"></script>
     <script>
         $(document).ready(() => {
             $.get('http://localhost:3000/checkConnection', {}, function(data) {
